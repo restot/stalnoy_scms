@@ -7,7 +7,7 @@ require_once __DIR__."/read_xls.php";
 
 $array=PathHandler::files('/input/xls/*');
 $hash_array=PathHandler::hashArray($array);
-var_dump($array);
+// var_dump($array);
 // var_dump(PathHandler::hashArray($array));
 
 $file=jsonIO::checkHashFile();
@@ -29,11 +29,23 @@ if ($file==NULL){
 //   }
 // }
 
-$arrayxml=PathHandler::files('/output/xml/*'); 
-var_dump($arrayxml);
+$arrayxml=PathHandler::files('/output/xml/*');
+// var_dump($arrayxml);
 
-// foreach ($array as $a => $b) {
-//   readXLS($a,$b);
-// }
+foreach ($array as $a => $b) {
+  if(array_key_exists($a,$arrayxml)){
+    // $hash_array[$a]
+    $xmlt=file_get_contents($arrayxml[$a]);
+    $load = new SimpleXMLElement($xmlt);
+    // var_dump((string)$load->attributes()->hash);
+    // var_dump($hash_array[$a_]);
+    if ($hash_array[$a."_hash"]==(string)$load->attributes()->hash){
+      echo "Actual_xml".PHP_EOL;
+    } else {
+      unlink($arrayxml[$a]);
+      readXLS($a,$b);
+    }
+  }
+}
 
  ?>

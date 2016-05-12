@@ -16,7 +16,8 @@ public function files($path){
       unset($temp_path,$c);
 
     } else {
-      array_push($path_array,$b);
+      preg_match('/.*xml\/(.*).xml/Us',$b,$c);
+      $path_array[$c[1]]=$b;
     }
   }
   return $path_array;

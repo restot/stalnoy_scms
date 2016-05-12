@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<root date="2016-5-12 13:12" hash="4d071636da430f4dd704d81eae0fca99">
+<root date="2016-5-12 14:04" hash="d0ba772ca9efb45e4179b335e1f49c77">
   <row_0>
     <col_0>unset</col_0>
     <col_1>unset</col_1>
@@ -59,7 +59,7 @@
   <row_5>
     <col_0>52345</col_0>
     <col_1>(21101) Рукавички ХБ чорні "ЗИМА", без ПВХ, Сталь</col_1>
-    <col_2>8.98</col_2>
+    <col_2>8.98123</col_2>
     <col_3>Y</col_3>
     <col_4>20</col_4>
     <col_5>15.25</col_5>
@@ -81,7 +81,7 @@
   <row_7>
     <col_0>54918</col_0>
     <col_1>(21103 без подвески) Рукавички ХБ/ПЕ помаранч., синій ПВХ+лого Сталь</col_1>
-    <col_2>8.89</col_2>
+    <col_2>8.891231</col_2>
     <col_3>N</col_3>
     <col_4>unset</col_4>
     <col_5>12.7</col_5>
