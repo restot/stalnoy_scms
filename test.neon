@@ -17,9 +17,3 @@ children:      # this is a comment
 entity: Column(type=int, nulls=yes)
 
 string: 'characters like #()= put in quotes'
-
-multi: '''
-	one line
-	second line
-	third line
-'''
