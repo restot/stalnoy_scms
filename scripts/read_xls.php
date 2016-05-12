@@ -22,10 +22,8 @@ $array = array();
 
 $root = $xml->createElement("root");
 $xml->appendChild($root);
-$root->setAttribute("date", $time);
-$hash = $xml->createElement("root");
-$xml->appendChild($hash);
-$hash->setAttribute("hash", md5_file($path));
+$root->setAttribute("date", $time);;
+$root->setAttribute("hash", md5_file($path));
 $r=0;
 
 foreach($aSheet->getRowIterator() as $row){
