@@ -1,6 +1,12 @@
 <?php
 
 Class PathHandler{
+  public function hash_log($aa,$bb)
+  {
+    $text=date("Y-n-d H:i")." | ".$aa." | ".$bb." | "."\n";
+    // echo $text;
+    file_put_contents(dirname(__DIR__)."/data/log.txt",$text,FILE_APPEND);
+  }
 
 public function files($path){
   $path_array=array();
@@ -12,6 +18,7 @@ public function files($path){
       if(count($temp_path)==1){
         preg_match('/.*xls_(.*)/s',$b,$c);
         $path_array[$c[1]]=$temp_path[0];
+
       }
       unset($temp_path,$c);
 
@@ -30,6 +37,7 @@ public function hashArray($array)
   foreach ($array as $key => $value) {
     $hash_array[$key."_hash"]=md5_file($value);
     $hash_array[$key."_size"]=filesize($value);
+    PathHandler::hash_log($key,$hash_array[$key."_hash"]);
   }
   // var_dump();
   return $hash_array;
