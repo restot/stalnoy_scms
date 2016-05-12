@@ -5,7 +5,7 @@
  * Copyright (c) 2004 David Grudl (https://davidgrudl.com)
  */
 
-namespace Nette\Neon;
+// namespace Nette\Neon;
 
 
 /**

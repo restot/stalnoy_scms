@@ -1,0 +1,25 @@
+# This is NEON file - TRY TO EDIT IT!
+
+name: Homer
+
+address:
+	street: 742 Evergreen Terrace
+	city: Springfield
+	country: USA
+
+phones: { home: 555-6528, work: 555-7334 }
+
+children:      # this is a comment
+	- Bart
+	- Lisa
+	- Maggie
+
+entity: Column(type=int, nulls=yes)
+
+string: 'characters like #()= put in quotes'
+
+multi: '''
+	one line
+	second line
+	third line
+'''
