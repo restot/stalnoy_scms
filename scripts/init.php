@@ -40,11 +40,23 @@ foreach ($array as $a => $b) {
     // var_dump((string)$load->attributes()->hash);
     // var_dump($hash_array[$a_]);
     if ($hash_array[$a."_hash"]==(string)$load->attributes()->hash){
-      echo "Actual_xml".PHP_EOL;
+      echo "Actual_xml [$a]".PHP_EOL;
+      if(!file_exists($arrayxml[$a."_cater"]) && $a=="stalnoy") {
+        readXLS($a."_cater",$b);
+      }
     } else {
-      unlink($arrayxml[$a]);
-      readXLS($a,$b);
+      if ($a!="stalnoy"){
+        @unlink($arrayxml[$a]);
+        readXLS($a,$b);
+      } else {
+        @unlink($arrayxml[$a]);
+        @unlink($arrayxml[$a."_cater"]);
+        readXLS($a,$b);
+      }
+
     }
+  } else {
+    readXLS($a,$b);
   }
 }
 

@@ -1,5 +1,6 @@
 <?php
 ini_set('memory_limit', '-1');
+global $i;
 function readXLS($name,$path)
 {
 
@@ -12,7 +13,17 @@ $inputFileName = $path;
     $objReader = PHPExcel_IOFactory::createReader($inputFileType);
     $objReader->setReadDataOnly(true);
     $objPHPExcel = $objReader->load($inputFileName);
-    $objPHPExcel->setActiveSheetIndex(0);
+    if ($i==0 && $name=='stalnoy'){
+
+      $i=1;
+
+    }
+    if ($name!="stalnoy_cater"){
+      $objPHPExcel->setActiveSheetIndex(0);
+    } else {
+      $objPHPExcel->setActiveSheetIndex(1);
+    }
+
     $aSheet = $objPHPExcel->getActiveSheet();
 
 $xml=new domDocument("1.0", "utf-8");
@@ -49,8 +60,14 @@ foreach($aSheet->getRowIterator() as $row){
 }
 
 $xml->save(dirname(__DIR__) . "/output/xml/".$name.".xml");
-echo 'DONE'." Memory usage ".(memory_get_peak_usage(true) / 1024 / 1024)." MB".EOL;
-sleep(1);
 
+echo 'DONE'." Memory usage ".(memory_get_peak_usage(true) / 1024 / 1024)." MB".EOL;
+// sleep(1);
+if($i==1){
+  readXLS("stalnoy_cater",$path);
+  $i=0;
 }
+}
+
+
  ?>

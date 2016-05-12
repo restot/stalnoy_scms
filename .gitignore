@@ -1,5 +1,8 @@
 *.neon
 settings.php
 tmp
-
+*.xls
+*.xlsx
+*.xml
+*.txt
 log.txt

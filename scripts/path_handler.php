@@ -19,6 +19,10 @@ public function files($path){
         preg_match('/.*xls_(.*)/s',$b,$c);
         $path_array[$c[1]]=$temp_path[0];
 
+      }else if(count($temp_path)>1) {
+        echo "2 FILES on FOLDER !!!".PHP_EOL;
+        var_dump($temp_path);
+        exit();
       }
       unset($temp_path,$c);
 
