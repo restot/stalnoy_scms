@@ -2,9 +2,9 @@
 
 Class PathHandler{
 
-public function files(){
+public function files($path){
   $path_array=array();
-   $file_list=glob(dirname(__DIR__)."/input/xls/*");
+   $file_list=glob(dirname(__DIR__).$path);
   foreach ($file_list as $a => $b) {
     // var_dump($b);
     if(is_dir($b)){
@@ -15,6 +15,8 @@ public function files(){
       }
       unset($temp_path,$c);
 
+    } else {
+      array_push($path_array,$b);
     }
   }
   return $path_array;

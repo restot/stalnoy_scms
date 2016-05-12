@@ -5,9 +5,9 @@ require_once __DIR__."/read_xls.php";
 
 
 
-$array=PathHandler::files();
+$array=PathHandler::files('/input/xls/*');
 $hash_array=PathHandler::hashArray($array);
-// var_dump($array);
+var_dump($array);
 // var_dump(PathHandler::hashArray($array));
 
 $file=jsonIO::checkHashFile();
@@ -29,8 +29,11 @@ if ($file==NULL){
 //   }
 // }
 
-foreach ($array as $a => $b) {
-  readXLS($a,$b);
-}
+$arrayxml=PathHandler::files('/output/xml/*'); 
+var_dump($arrayxml);
+
+// foreach ($array as $a => $b) {
+//   readXLS($a,$b);
+// }
 
  ?>
