@@ -1,0 +1,58 @@
+<?php
+ini_set('memory_limit', '-1');
+function readXLS($name,$path)
+{
+
+require_once dirname(__FILE__) . '\Classes\PHPExcel.php';
+
+$inputFileName = $path;
+
+    require_once dirname(__FILE__) .'/Classes/PHPExcel/IOFactory.php';
+    $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+    $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+    $objReader->setReadDataOnly(true);
+    $objPHPExcel = $objReader->load($inputFileName);
+    $objPHPExcel->setActiveSheetIndex(0);
+    $aSheet = $objPHPExcel->getActiveSheet();
+
+$xml=new domDocument("1.0", "utf-8");
+$xml->formatOutput = true;
+$time=date("Y-n-d H:i");
+$array = array();
+
+$root = $xml->createElement("root");
+$xml->appendChild($root);
+$root->setAttribute("date", $time);
+$hash = $xml->createElement("root");
+$xml->appendChild($hash);
+$hash->setAttribute("hash", md5_file($path));
+$r=0;
+
+foreach($aSheet->getRowIterator() as $row){
+
+  $xrow = $xml->createElement("row_".$r);
+  $root->appendChild($xrow);
+
+  $cellIterator = $row->getCellIterator();
+  $cellIterator->setIterateOnlyExistingCells(false);
+  $item = array();
+  $c=0;
+
+  foreach($cellIterator as $cell){
+    $scell=($cell->getCalculatedValue()==NULL)?'unset':$cell->getCalculatedValue();
+    array_push($item, $scell);
+    $col = $xml->createElement("col_".$c,htmlspecialchars($scell, ENT_COMPAT));
+    $xrow->appendChild($col);
+    $c++;
+  }
+
+  echo "READ_XLS_$name#$r", EOL;
+  $r++;
+}
+
+$xml->save(dirname(__DIR__) . "/output/xml/".$name.".xml");
+echo 'DONE'." Memory usage ".(memory_get_peak_usage(true) / 1024 / 1024)." MB".EOL;
+sleep(1);
+
+}
+ ?>
