@@ -7,8 +7,7 @@ require_once __DIR__."/read_xls.php";
 
 $array=PathHandler::files('/input/xls/*');
 $hash_array=PathHandler::hashArray($array);
-// var_dump($array);
-// var_dump(PathHandler::hashArray($array));
+
 
 $file=jsonIO::checkHashFile();
 
