@@ -51,7 +51,7 @@ public function hashArray($array)
 Class jsonIO  {
   public function checkHashFile()
   {
-     $file_list=glob(dirname(__DIR__)."/data/*");
+     $file_list=glob(dirname(__DIR__)."/data/hash.txt");
     //  var_dump($file_list);
      if (count($file_list)==0){
         $data=NULL;

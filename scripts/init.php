@@ -29,13 +29,14 @@ if ($file==NULL){
 //   }
 // }
 
-$arrayxml=PathHandler::files('/output/xml/*');
+$arrayxml=PathHandler::files('/output/xml/*.xml');
 // var_dump($arrayxml);
-
+// exit();
 foreach ($array as $a => $b) {
   if(array_key_exists($a,$arrayxml)){
     // $hash_array[$a]
     $xmlt=file_get_contents($arrayxml[$a]);
+    // var_dump($xmlt);
     $load = new SimpleXMLElement($xmlt);
     // var_dump((string)$load->attributes()->hash);
     // var_dump($hash_array[$a_]);

@@ -56,6 +56,7 @@ foreach($aSheet->getRowIterator() as $row){
   }
 
   echo "READ_XLS_$name#$r", EOL;
+  // var_dump($path);
   $r++;
 }
 
