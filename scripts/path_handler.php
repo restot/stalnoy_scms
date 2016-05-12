@@ -43,7 +43,7 @@ Class jsonIO  {
         var_dump($file_list);
         file_put_contents(dirname(__DIR__)."/data/hash.txt",$data);
      } else{
-       $data=json_decode(file_get_contents($file_list[0]));
+       $data=json_decode(file_get_contents($file_list[0]),true);
      }
      return $data;
   }
