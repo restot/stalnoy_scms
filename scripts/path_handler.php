@@ -14,7 +14,7 @@ public function files($path){
   foreach ($file_list as $a => $b) {
     // var_dump($b);
     if(is_dir($b)){
-      $temp_path=glob($b."/*");
+      $temp_path=glob($b."/*.xls*");
       if(count($temp_path)==1){
         preg_match('/.*xls_(.*)/s',$b,$c);
         $path_array[$c[1]]=$temp_path[0];
