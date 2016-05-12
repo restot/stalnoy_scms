@@ -9,6 +9,7 @@ require_once dirname(__FILE__) . '\Classes\PHPExcel.php';
 $inputFileName = $path;
 
     require_once dirname(__FILE__) .'/Classes/PHPExcel/IOFactory.php';
+
     $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
     $objReader = PHPExcel_IOFactory::createReader($inputFileType);
     $objReader->setReadDataOnly(true);
