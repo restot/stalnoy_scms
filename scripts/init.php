@@ -42,15 +42,18 @@ foreach ($array as $a => $b) {
     if ($hash_array[$a."_hash"]==(string)$load->attributes()->hash){
       echo "Actual_xml [$a]".PHP_EOL;
       if(!file_exists($arrayxml[$a."_cater"]) && $a=="stalnoy") {
+        echo "Updatind... [$a]".PHP_EOL;
         readXLS($a."_cater",$b);
       }
     } else {
       if ($a!="stalnoy"){
         @unlink($arrayxml[$a]);
+        echo "Updatind... [$a]".PHP_EOL;
         readXLS($a,$b);
       } else {
         @unlink($arrayxml[$a]);
         @unlink($arrayxml[$a."_cater"]);
+        echo "Updatind... [$a]".PHP_EOL;
         readXLS($a,$b);
       }
 
