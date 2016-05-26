@@ -26,6 +26,9 @@ $table="last_export";
 $q=$test->getCOls($db,$table,'hash_key');
 $cols= array('Код_товара','Цена','Наличие' );
 $d=$test->prepareData($db,$cols,$table);
-$c=array_key_exists('DT-5001',$d);
+$c=$test->prepareData2($db,$cols,$table);
+// $c=in_array(array('DT-5001',!NULL,!NULL),$d);
+$ext=array(array('DT-5001','Цена'=> 1,'Наличие'=>'0'));
 
-var_dump($c);
+$f=$test->updateData($ext,$d,$c);
+// var_dump($d);
