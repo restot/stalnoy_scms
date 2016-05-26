@@ -481,6 +481,7 @@ class SafeMySQL
 			$this->cutStats();
 
 			$this->error("$error. Full query: [$query]");
+			// var_dump($query);
 		}
 		$this->cutStats();
 		return $res;
