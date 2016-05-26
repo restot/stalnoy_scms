@@ -33,6 +33,7 @@ class UpdBase
       }
       // $darr=
       // var_dump($data);
+    $this->data= $this->prepareData2($db,$cols,$table);
       return $fdata;
     }
 
@@ -88,7 +89,7 @@ return $parseCol;
 
     // public
 
-    public function updateData($extdata,$intdata,$data) # NOTE: $intdata => internal data;
+    public function updateData($extdata,$intdata) # NOTE: $intdata => internal data;
     {
 
     $this->fulldata=$intdata;
@@ -111,7 +112,7 @@ return $parseCol;
 
 
     //  return $out;
-         $out=array_map(array('UpdBase', 'diff'),$data);
+         $out=array_map(array('UpdBase', 'diff'),$this->data);
          $out=array_unique($out);
          var_dump($out);
     }
