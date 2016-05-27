@@ -12,8 +12,19 @@
 *
 * Класс SafeMySQL необходим для работы
 * @link http://phpfaq.ru/safemysql
+* NOTE: only INSERT mode work yet.
+* Пример:
+* $table='last_export'; какая то таблица
+* $db = new SafeMysql(array('user' => $db_user, 'pass' => $db_pass, 'db' => $db_database, 'charset' => 'utf8')); экземпляр класса с авторизацией
+* $test =new fastsql; экземпляр класса
+* $q=$test->getCOls($db,$table,'hash_key'); получаем все столбцы кроме hash_key
+* foreach ($array as $a => $b) { входящий массив вносим в запрос
+* $test->addCol($v2);
+* }
 *
-* NOTE:P.s  перепроверяйте работу класса во время знакомства, класс очень дружелюбен к ошибкам, и грузит данные в любом виде...
+* $test->addRow(); завершаем текущий запрос подготавливаем новый...
+* $test->sendData($db,$table,$parseCol); завершаем последний запрос, записываем в файл и отправляем в базу.
+ * NOTE:P.s  перепроверяйте работу класса во время знакомства, класс очень дружелюбен к ошибкам, и грузит данные в любом виде...
 */
 class fastsql
 {
