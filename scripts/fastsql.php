@@ -97,7 +97,7 @@ class fastsql
 
         $qu = $db->query("LOAD DATA LOCAL INFILE ?p INTO TABLE ?n FIELDS TERMINATED BY ',,' LINES TERMINATED BY '%%' ($cols)", '"'.str_replace('\\', '\\\\', $this->data_file).'"', $table);
         if ($qu) {
-            echo 'Loading complite!'.EOL;
+            echo 'Loading complete!'.EOL;
             unlink($this->data_file);
             unset($this->data);
             unset($qu);
