@@ -6,5 +6,5 @@ tmp
 *.xml
 *.txt
 *.swp
-test.php
+test*.php
 log.txt
