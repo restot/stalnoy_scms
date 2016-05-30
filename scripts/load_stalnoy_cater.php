@@ -6,7 +6,8 @@ $table='last_export_categories';
 $db = new SafeMysql(array('user' => SetUp::db_user, 'pass' => SetUp::db_pass, 'db' => SetUp::db_database, 'charset' => 'utf8'));
 
 $sXml=file_get_contents(dirname(__DIR__)."/output/xml/stalnoy_cater.xml");
-
+$start = microtime(true);
+echo "Load stalnoy_cater to DATABASE ...".PHP_EOL;
     $load = new SimpleXMLElement($sXml);
     $data='';
     $quw='';
@@ -18,13 +19,14 @@ AND TABLE_NAME = ?s
 ORDER BY ORDINAL_POSITION",$table);
 
 $data_file=dirname(__DIR__)."/output/xml/data.txt";
-
+$del=$db->query("DELETE FROM ?n;", $table);
 $hash=(string)$load->attributes()->hash;
 
 $parseCol = '';
         foreach ($cols as $c1 => $c2) {
           if($c2!='parentId' &&
           $c2!='idProm' &&
+          // $c2!='uId' &&
           $c2!='Категория1' &&
           $c2!='Категория2' &&
           $c2!='Категория3' &&
@@ -49,17 +51,20 @@ $string='';
 
   $parseVal = '';
   foreach ($catarray as $v1 => $v2) {
+      $parseVal.=$db->parse("?s,",$v2);
 
-    $string.=$v2.',,';
+    // $string.=$v2.',,';
 
   }
+  $parseVal.=$db->parse("?s,",$hash);
+  $parseVal=substr($parseVal, 0, -1);
+$sql =$db->query("INSERT INTO ?n (?p) VALUES (?p)",$table,$parseCol,$parseVal);
 
-
-  $string.=$hash;
-  $string.="%%";
-  echo "XML READ_LAST_EXPORT #".$i.PHP_EOL;
-
-  $data.=$string;
+    // $string.=$hash;
+    // $string.="%%";
+    // echo "XML READ_LAST_EXPORT #".$i.PHP_EOL;
+    //
+    // $data.=$string;
 
   $i++;
   $ii++;
@@ -68,14 +73,14 @@ $string='';
 }
 
 
-$start = microtime(true);
+
 // $data=substr($data, 0, -2);
-file_put_contents($data_file, $data);
-echo "Load Data".PHP_EOL;
-$qu=$db->query("LOAD DATA LOCAL INFILE ?p INTO TABLE ?n  FIELDS TERMINATED BY ',,' LINES TERMINATED BY '%%' ($parseCol)", '"'.str_replace('\\', '\\\\', $data_file).'"', $table);
-if ($qu) {
-    echo "Loading complite!".PHP_EOL;
-}
+// file_put_contents($data_file, $data);
+// echo "Load Data".PHP_EOL;
+// $qu=$db->query("LOAD DATA LOCAL INFILE ?p INTO TABLE ?n  FIELDS TERMINATED BY ',,' LINES TERMINATED BY '%%' ($parseCol)", '"'.str_replace('\\', '\\\\', $data_file).'"', $table);
+// if ($qu) {
+//     echo "Loading complite!".PHP_EOL;
+// }
 
 echo 'DONE'.' Memory usage '.(memory_get_peak_usage(true) / 1024 / 1024).' MB'.PHP_EOL;
 $time = microtime(true) - $start;

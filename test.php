@@ -23,12 +23,12 @@ echo("2"."\n");
 // var_dump(SetUP::db_host);
 $test= new UpdBase;
 $table="last_export";
-$q=$test->getCOls($db,$table,'hash_key');
-$cols= array('Код_товара','Цена','Наличие' );
-$d=$test->prepareData($db,$cols,$table);
+$q=$test->getCOls($db,$table);
+// $cols= array('Код_товара','Цена','Наличие' );
 // $c=$test->prepareData2($db,$cols,$table);
+// $d=$test->prepareData($db,$cols,$table);
 // $c=in_array(array('DT-5001',!NULL,!NULL),$d);
-$ext=array(array('DT-5001','Цена'=> 1,'Наличие'=>'0'));
 
-$f=$test->updateData($ext,$d);
-// var_dump($d);
+// $ext=array(array('DT-5001','Цена'=> 1,'Наличие'=>'0'));
+// $f=$test->updateData($ext,$d);
+var_dump($q);

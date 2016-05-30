@@ -1,9 +1,10 @@
 <?php
 ini_set('memory_limit', '-1');
 global $i;
+
 function readXLS($name,$path)
 {
-
+echo "Read $name .xlsx to .xml ...".EOL;
 require_once dirname(__FILE__) . '\Classes\PHPExcel.php';
 
 $inputFileName = $path;
@@ -56,7 +57,7 @@ foreach($aSheet->getRowIterator() as $row){
     $c++;
   }
 
-  echo "READ_XLS_$name#$r", EOL;
+  // echo "READ_XLS_$name#$r", EOL;
   // var_dump($path);
   $r++;
 }
