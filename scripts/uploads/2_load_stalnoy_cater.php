@@ -1,6 +1,6 @@
 <?php
-require_once  __DIR__.'/settings.php';
-require_once  __DIR__.'/safemysql.php';
+require_once  dirname(__DIR__).'/settings.php';
+require_once  dirname(__DIR__).'/safemysql.php';
 
 $table='last_export_categories';
 $db = new SafeMysql(array('user' => SetUp::db_user, 'pass' => SetUp::db_pass, 'db' => SetUp::db_database, 'charset' => 'utf8'));
@@ -18,7 +18,7 @@ WHERE TABLE_SCHEMA = DATABASE()
 AND TABLE_NAME = ?s
 ORDER BY ORDINAL_POSITION",$table);
 
-$data_file=dirname(__DIR__)."/output/xml/data.txt";
+$data_file=dirname(dirname(__DIR__))."/output/xml/data.txt";
 $del=$db->query("DELETE FROM ?n;", $table);
 $hash=(string)$load->attributes()->hash;
 

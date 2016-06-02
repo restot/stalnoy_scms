@@ -11,15 +11,16 @@ $hash_array=PathHandler::hashArray($array);
 
 $file=jsonIO::checkHashFile();
 
-if ($file==NULL){
+if ($file==NULL || $file=='null'|| $file=='NULL'){
   $status=jsonIO::writeData($hash_array);
+  // var_dump($status);
   if ($status!="No error"){
     var_dump($status);
     exit();
   }
 }
-// var_dump($array);
-
+// var_dump($file);
+// 123
 // foreach ($hash_array as $key => $value) {   //NOTE: кусок кода для проверки по ключам 1 берется из имеющихся файлов, 2 из файла с хешеми и записями
 //   if (array_key_exists($key,$file)){
 //     var_dump($file);
@@ -62,7 +63,7 @@ foreach ($array as $a => $b) {
     readXLS($a,$b);
   }
 }
-
+// $file=jsonIO::writeData($file);
 
 
  ?>

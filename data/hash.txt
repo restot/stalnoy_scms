@@ -1,10 +1,16 @@
 {
-    "bp_hash": "4d071636da430f4dd704d81eae0fca99",
-    "bp_size": 636905,
-    "likota_hash": "8ae987ca1535c3b7a98f7d7fd73a9a84",
-    "likota_size": 13877,
-    "stalnoy_hash": "b0a670b1eacc7df9370d8d0cd9c6ab150",
-    "stalnoy_size": 96712168,
-    "tt_hash": "640ead14f2a9df86b7d89dfdb2fab577",
-    "tt_size": 947712
+    "bp_hash": "de26aeeab76e2bb73b8045bf1f9379d3",
+    "bp_size": 833536,
+    "dia_hash": "ebc079e9e8a289f3d13d0ca8630c15db",
+    "dia_size": 776704,
+    "likota_hash": "9f24d137d1394dabb5eaf4890396c949",
+    "likota_size": 412786,
+    "sadko_ostatki_hash": "c2dd03a4ac81fe687a6776c4e93e6f75",
+    "sadko_ostatki_size": 117760,
+    "sadko_rrc_hash": "a29b57101d0b4569dbab561570dd2756",
+    "sadko_rrc_size": 59904,
+    "stalnoy_hash": "2986dd295e6bb9795c23390fd0495bac",
+    "stalnoy_size": 2799932,
+    "tt_hash": "83c49caaeabf0096c5e02f867d8595c6",
+    "tt_size": 956416
 }

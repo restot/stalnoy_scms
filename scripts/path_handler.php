@@ -51,23 +51,29 @@ public function hashArray($array)
 Class jsonIO  {
   public function checkHashFile()
   {
-     $file_list=glob(dirname(__DIR__)."/data/hash.txt");
+     $file_list=glob(dirname(__DIR__)."\data\hash.txt");
     //  var_dump($file_list);
      if (count($file_list)==0){
-        $data=NULL;
-        var_dump($file_list);
-        file_put_contents(dirname(__DIR__)."/data/hash.txt",$data);
+        // $data=NULL;
+        // var_dump($file_list);
+        file_put_contents(dirname(__DIR__)."/data/hash.txt",NULL);
      } else{
        $data=json_decode(file_get_contents($file_list[0]),true);
+      //  var_dump($data);
+       if ($data==NULL || $data=='null'|| $data=='NULL'){
+         return NULL;
+       }
      }
      return $data;
   }
 
   public function writeData($array)
   {
-    $json=json_encode($array);
+     $file_list=glob(dirname(__DIR__)."\data\hash.txt");
+    $json=json_encode($array,JSON_PRETTY_PRINT);
     // var_dump(json_last_error_msg());
-    file_put_contents(dirname(__DIR__)."/data/hash.txt",$json);
+    echo"123\n";
+    file_put_contents($file_list[0],$json);
     return json_last_error_msg();
   }
 

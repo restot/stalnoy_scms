@@ -1,14 +1,14 @@
 <?php
-require_once  __DIR__.'/settings.php';
-require_once  __DIR__.'/safemysql.php';
-require_once  __DIR__.'/fastsql.php';
+require_once  dirname(__DIR__).'/settings.php';
+require_once  dirname(__DIR__).'/safemysql.php';
+require_once  dirname(__DIR__).'/fastsql.php';
 $start = microtime(true);
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 $table='last_export';
 echo "Load stalnoy to DATABASE ...".EOL;
 $db = new SafeMysql(array('user' => SetUp::db_user, 'pass' => SetUp::db_pass, 'db' => SetUp::db_database, 'charset' => 'utf8'));
 
-$xmlf=dirname(__DIR__)."/output/xml/stalnoy.xml";
+$xmlf=dirname(dirname(__DIR__))."/output/xml/stalnoy.xml";
 $sXml=file_get_contents($xmlf);
 
 
