@@ -1,10 +1,10 @@
 <?php
 // define('stalnoy',true);
-require_once dirname(dirname(__FILE__)).'/connect_mysql/settings.php';
-require_once dirname(dirname(__FILE__)).'/connect_mysql/safemysql.php';
+require_once  dirname(__DIR__).'/settings.php';
+require_once  dirname(__DIR__).'/safemysql.php';
 // define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 $table='last_export';
-$db = new SafeMysql(array('user' => $db_user, 'pass' => $db_pass,'db' => 'stalnoy', 'charset' => 'utf8'));
+$db = new SafeMysql(array('user' => SetUp::db_user, 'pass' => SetUp::db_pass, 'db' => SetUp::db_database, 'charset' => 'utf8'));
 // $mysqli = new mysqli("localhost", $db_user, $db_pass, "stalnoy");
 // $load=simplexml_load_file(dirname(dirname(dirname(__FILE__))) . "/buckup_stalnoy/yandex_market3.xml",LIBXML_NOCDATA);
 $sXml=file_get_contents("http://intertool.ua/xml_output/yandex_market.xml");
@@ -99,10 +99,10 @@ $parseValue=substr($parseValue, 0, -1);
         $stat=($sql===true)?'UPD':'ERR_UPD';
         $items++;
         echo "LOAD_INTER#".$iter." Load [".$qarray['Идентификатор_товара']."]"." Status=[".$qarray['Наличие']."]".EOL;
-        file_put_contents(dirname(__FILE__)."\log.txt","#".$iter." Load [".$qarray['Идентификатор_товара']."]"." Status=[".$qarray['Наличие']."]".PHP_EOL,FILE_APPEND);
+        // file_put_contents(dirname(__FILE__)."\log.txt","#".$iter." Load [".$qarray['Идентификатор_товара']."]"." Status=[".$qarray['Наличие']."]".PHP_EOL,FILE_APPEND);
   } else {
         echo "LOAD_INTER#".$iter." Check [".$qarray['Идентификатор_товара']."]".EOL;
-        file_put_contents(dirname(__FILE__)."\log.txt","#".$iter." Check [".$qarray['Идентификатор_товара']."]".PHP_EOL,FILE_APPEND);
+        // file_put_contents(dirname(__FILE__)."\log.txt","#".$iter." Check [".$qarray['Идентификатор_товара']."]".PHP_EOL,FILE_APPEND);
   }
   // usleep(300000);
   unset($item);
@@ -113,7 +113,7 @@ $parseValue=substr($parseValue, 0, -1);
 $res=$iter-$items;
 echo "Обновленно принудительно: ".$items.EOL;
 echo "Новых товаров: ".$res.EOL;
-file_put_contents(dirname(__FILE__)."\log.txt","Обновленно принудительно: ".$items.PHP_EOL,FILE_APPEND);
-file_put_contents(dirname(__FILE__)."\log.txt","Новых товаров: ".$iter-$items.PHP_EOL,FILE_APPEND);
-file_put_contents(dirname(__FILE__)."\log.txt",'DONE'." Memory usage ".(memory_get_peak_usage(true) / 1024 / 1024)." MB".PHP_EOL,FILE_APPEND);
+// file_put_contents(dirname(__FILE__)."\log.txt","Обновленно принудительно: ".$items.PHP_EOL,FILE_APPEND);
+// file_put_contents(dirname(__FILE__)."\log.txt","Новых товаров: ".$iter-$items.PHP_EOL,FILE_APPEND);
+// file_put_contents(dirname(__FILE__)."\log.txt",'DONE'." Memory usage ".(memory_get_peak_usage(true) / 1024 / 1024)." MB".PHP_EOL,FILE_APPEND);
  ?>
