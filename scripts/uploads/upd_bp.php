@@ -1,7 +1,12 @@
 <?php
 // define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 // define('stalnoy',true);
-// define('KURS',27.5);
+echo "Please enter KURS BP...\n";
+define('KURS',trim(fgets(STDIN)));
+require_once  dirname(__DIR__)."/path_handler.php";
+$array=PathHandler::files('/input/xls/*');
+$hash_array=PathHandler::hashArray($array);
+$qarray['hash_key']=$hash_array['bp_hash'];
 require_once  dirname(__DIR__).'/settings.php';
 require_once  dirname(__DIR__).'/safemysql.php';
 require_once  dirname(__DIR__).'/fastsql.php';
@@ -34,28 +39,35 @@ $iter=1;
 foreach ($load as $row => $tag) {
   if (
        (string)$tag->col_0=='unset' ||
-       is_numeric((string)$tag->col_0)!==true
+       (string)$tag->col_6=='unset' ||
+       (string)$tag->col_3=='unset'
        ){
     continue;
   }
   // print_r($load);
-  $pos=strpos((string)$tag->col_3,'Y');
-  if ($pos === false) {
+  // $pos=strpos((string)$tag->c(string)$tag->col_6ol_6,);
+  if ((string)$tag->col_6 !=0) {
     $itemcount='-';
   } else{
     $itemcount='+';
   }
-  $uuid=(string)$tag->col_0;
+  $uuid=(string)$tag->col_1;
 // $qarray['Идентификатор_товара']=(string)$tag->col_1;
-if((int)$tag->col_5!=0){
-$qarray['Цена']=round((float)$tag->col_5/KURS,6);
-} else{
+// if((int)$tag->col_5!=0){
+$qarray['Цена']=round((float)$tag->col_3/KURS,6);
+// } else{
 
-      $qarray['Цена']=0;
-}
+      // $qarray['Цена']=0;
+// }
 
 
 $qarray['Наличие']=$itemcount;
+
+
+
+// var_dump($hash_array);
+// exit();
+
 // $qarray['Валюта']="USD";
 // $qarray['date']=date("Y-n-d H:i:s");
 // print_r($tag);

@@ -1,6 +1,9 @@
 <?php
 require_once  dirname(__DIR__).'/settings.php';
 require_once  dirname(__DIR__).'/safemysql.php';
+$array=PathHandler::files('/input/xls/*');
+$hash_array=PathHandler::hashArray($array);
+$qarray['hash_key']=$hash_array['stalnoy_hash'];
 
 $table='last_export_categories';
 $db = new SafeMysql(array('user' => SetUp::db_user, 'pass' => SetUp::db_pass, 'db' => SetUp::db_database, 'charset' => 'utf8'));

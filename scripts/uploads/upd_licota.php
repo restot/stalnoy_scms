@@ -6,11 +6,11 @@ require_once  dirname(__DIR__).'/safemysql.php';
 require_once  dirname(__DIR__)."/path_handler.php";
 $array=PathHandler::files('/input/xls/*');
 $hash_array=PathHandler::hashArray($array);
-$qarray['hash_key']=$hash_array['dia_hash'];
+$qarray['hash_key']=$hash_array['licota_hash'];
 $table='last_export';
 $db = new SafeMysql(array('user' => SetUp::db_user, 'pass' => SetUp::db_pass, 'db' => SetUp::db_database, 'charset' => 'utf8'));
 
-$sXml=file_get_contents(dirname(dirname(__DIR__))."/output/xml/dia.xml");
+$sXml=file_get_contents(dirname(dirname(__DIR__))."/output/xml/licota.xml");
 $load = new SimpleXMLElement($sXml, LIBXML_NOCDATA);
 // echo dirname(__FILE__)."/xml/converted.xml";
 $cols=$db->getCol("SELECT COLUMN_NAME
@@ -35,25 +35,24 @@ ORDER BY ORDINAL_POSITION",$table);
 $iter=1;
 $items=0;
 foreach ($load as $row => $tag) {
-  if ((string)$tag->col_1=='unset' ||
-      (string)$tag->col_6=='unset' ||
-      is_numeric((string)$tag->col_1)!==true ||
-      is_numeric((string)$tag->col_6)!==true ||
-       (string)$tag->col_7=='unset' ){
+  if (
+      (string)$tag->col_1=='unset' ||
+      (string)$tag->col_2=='unset')
+      {
     continue;
   }
   // print_r($load);
-  $pos=strpos((string)$tag->col_7,'+');
-  $pos1=is_numeric((string)$tag->col_7);
+  // $pos=strpos((string)$tag->col_5,'+');
+  // $pos1=is_numeric((string)$tag->col_7);
   // var_dump($pos1);
-  if ($pos === false && $pos1 === false) {
+  if ((string)$tag->col_5=='unset') {
     $itemcount='0';
   } else{
     $itemcount='+';
   }
 // $qarray['Идентификатор_товара']=(string)$tag->col_1;
-$uuid=(string)$tag->col_1;
-$qarray['Цена']=round((float)$tag->col_6,6);
+$uuid=(string)$tag->col_2;
+$qarray['Цена']=round((float)$tag->col_4,6);
 $qarray['Наличие']=$itemcount;
 // $qarray['Валюта']="USD";
 // $qarray['date']=date("Y-n-d H:i:s");
@@ -82,10 +81,10 @@ $qarray['Наличие']=$itemcount;
     $sql = $db->query("UPDATE ?n SET ?u WHERE ?n=?s",$table,$qarray,"Идентификатор_товара",$uuid);
 
     $items++;
-    echo "LOAD_DIA+#".$iter." Load [".$uuid."]"." price=[".$qarray['Цена']."]"." available=[".$qarray['Наличие']."]".EOL;
+    echo "LOAD_LICOTA+#".$iter." Load [".$uuid."]"." price=[".$qarray['Цена']."]"." available=[".$qarray['Наличие']."]".EOL;
     // file_put_contents(dirname(__FILE__)."\log.txt","#".$iter." Load [".$uuid."]"." price=[".$qarray['Цена']."]"." available=[".$qarray['Наличие']."]".PHP_EOL,FILE_APPEND);
   } else {
-    echo "LOAD_DIA+#".$iter." Check [".$uuid."]".EOL;
+    echo "LOAD_LICOTA#".$iter." Check [".$uuid."]".EOL;
     // file_put_contents(dirname(__FILE__)."\log.txt","#".$iter." Check [".$uuid."]".PHP_EOL,FILE_APPEND);
   }
 // usleep(300000);

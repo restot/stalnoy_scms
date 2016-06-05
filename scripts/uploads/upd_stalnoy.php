@@ -2,6 +2,9 @@
 require_once  dirname(__DIR__).'/settings.php';
 require_once  dirname(__DIR__).'/safemysql.php';
 require_once  dirname(__DIR__).'/fastsql.php';
+$array=PathHandler::files('/input/xls/*');
+$hash_array=PathHandler::hashArray($array);
+$qarray['hash_key']=$hash_array['stalnoy_hash'];
 $start = microtime(true);
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 $table='last_export';
