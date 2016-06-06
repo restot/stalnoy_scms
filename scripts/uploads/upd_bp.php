@@ -46,12 +46,13 @@ foreach ($load as $row => $tag) {
   }
   // print_r($load);
   // $pos=strpos((string)$tag->c(string)$tag->col_6ol_6,);
-  if ((string)$tag->col_6 !=0) {
-    $itemcount='-';
-  } else{
+  if ((int)$tag->col_6 != 0) {
     $itemcount='+';
+  } else{
+    $itemcount='-';
   }
   $uuid=(string)$tag->col_1;
+  // var_dump($tag->col_6);
 // $qarray['Идентификатор_товара']=(string)$tag->col_1;
 // if((int)$tag->col_5!=0){
 $qarray['Цена']=round((float)$tag->col_3/KURS,6);
