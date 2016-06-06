@@ -65,7 +65,7 @@ foreach($aSheet->getRowIterator() as $row){
 $xml->save(dirname(__DIR__) . "/output/xml/".$name.".xml");
 
 echo 'DONE'." Memory usage ".(memory_get_peak_usage(true) / 1024 / 1024)." MB".EOL;
-echo "UPD DATABASE $name";
+echo "UPD DATABASE $name\n";
 require_once dirname(__DIR__)."/scripts/uploads/upd_".$name.".php";
 // sleep(1);
 if($i==1){
