@@ -8,3 +8,4 @@ tmp
 *.swp
 test*.php
 log.txt
+.bat
