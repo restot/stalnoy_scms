@@ -72,7 +72,7 @@ Class jsonIO  {
      $file_list=glob(dirname(__DIR__)."\data\hash.txt");
     $json=json_encode($array,JSON_PRETTY_PRINT);
     // var_dump(json_last_error_msg());
-    echo"123\n";
+    // echo"123\n";
     file_put_contents($file_list[0],$json);
     return json_last_error_msg();
   }

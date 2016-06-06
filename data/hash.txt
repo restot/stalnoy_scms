@@ -1,9 +1,9 @@
 {
     "bp_hash": "de26aeeab76e2bb73b8045bf1f9379d3",
     "bp_size": 833536,
-    "dia_hash": "ebc079e9e8a289f3d13d0ca8630c15db",
+    "dia_hash": "e410e54ded41214a6bdc0ad7a9665a68",
     "dia_size": 776704,
-    "licota_hash": "9f2d11394eaf4890396c949",
+    "licota_hash": "9f24d137d1394dabb5eaf4890396c949",
     "licota_size": 412786,
     "sadko_ostatki_hash": "c2dd03a4ac81fe687a6776c4e93e6f75",
     "sadko_ostatki_size": 117760,

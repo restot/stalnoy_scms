@@ -22,7 +22,7 @@ $hash_array=PathHandler::hashArray($array);
 
 $file=jsonIO::checkHashFile();
 
-if ($file==NULL || $file=='null'|| $file=='NULL'){
+if ($file==NULL || $file=='null'|| $file=='NULL' || $file!=$hash_array){
   $status=jsonIO::writeData($hash_array);
   // var_dump($status);
   if ($status!="No error"){
