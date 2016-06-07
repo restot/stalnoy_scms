@@ -9,8 +9,8 @@
     "sadko_ostatki_size": 117760,
     "sadko_rrc_hash": "a29b57101d0b4569dbab561570dd2756",
     "sadko_rrc_size": 59904,
-    "stalnoy_hash": "2986dd295e6bb9795c23390fd0495bac",
-    "stalnoy_size": 2799932,
+    "stalnoy_hash": "bd394a1005d6853f5c899e79941b3c61",
+    "stalnoy_size": 2799930,
     "tt_hash": "83c49caaeabf0096c5e02f867d8595c6",
     "tt_size": 956416
 }

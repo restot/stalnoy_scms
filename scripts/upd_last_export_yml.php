@@ -1,9 +1,9 @@
 <?php
-define('stalnoy',true);
-include dirname(dirname(__FILE__)).'/connect_mysql/settings.php';
-include dirname(dirname(__FILE__)).'/connect_mysql/safemysql.php';
+require_once  dirname(__DIR__).'/settings.php';
+require_once  dirname(__DIR__).'/safemysql.php';
+// require_once  dirname(__DIR__).'/fastsql.php';
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
-$db = new SafeMysql(array('user' => $db_user, 'pass' => $db_pass,'db' => 'stalnoy', 'charset' => 'utf8'));
+$db = new SafeMysql(array('user' => SetUp::db_user, 'pass' => SetUp::db_pass, 'db' => SetUp::db_database, 'charset' => 'utf8'));
 // TODO: all it work
 // TODO: 123
 

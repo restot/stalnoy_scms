@@ -8,7 +8,8 @@ $qarray['hash_key']=$hash_array['stalnoy_hash'];
 $table='last_export_categories';
 $db = new SafeMysql(array('user' => SetUp::db_user, 'pass' => SetUp::db_pass, 'db' => SetUp::db_database, 'charset' => 'utf8'));
 
-$sXml=file_get_contents(dirname(__DIR__)."/output/xml/stalnoy_cater.xml");
+$xmlf=dirname(dirname(__DIR__))."/output/xml/stalnoy_cater.xml";
+$sXml=file_get_contents($xmlf);
 $start = microtime(true);
 echo "Load stalnoy_cater to DATABASE ...".PHP_EOL;
     $load = new SimpleXMLElement($sXml);

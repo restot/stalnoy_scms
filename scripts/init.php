@@ -8,11 +8,12 @@ if (PHP_SAPI != "cli") {
 }
 if ($argc>1){
  if ($argv[1]=="-force"){
-   define(FORCE,true);
- }
+  //  define(FORCE,true);
+  $flag=true;
+} else $flag=false;
 }
 // $options = $argv;
-// var_dump(FORCE);
+// var_dump($argv[1]);
 
 // exit();
 
@@ -21,12 +22,14 @@ $hash_array=PathHandler::hashArray($array);
 
 
 $file=jsonIO::checkHashFile();
+// var_dump($file);
 
+// var_dump($hash_array);
 if ($file==NULL || $file=='null'|| $file=='NULL' || $file!=$hash_array){
   $status=jsonIO::writeData($hash_array);
   // var_dump($status);
   if ($status!="No error"){
-    var_dump($status);
+    // var_dump($status);
     exit();
   }
 }
@@ -43,6 +46,7 @@ if ($file==NULL || $file=='null'|| $file=='NULL' || $file!=$hash_array){
 $arrayxml=PathHandler::files('/output/xml/*.xml');
 // var_dump($arrayxml);
 // exit();
+$state=0;
 foreach ($array as $a => $b) {
   if(array_key_exists($a,$arrayxml)){
     // $hash_array[$a]
@@ -50,10 +54,12 @@ foreach ($array as $a => $b) {
     // var_dump($xmlt);
     $load = new SimpleXMLElement($xmlt);
     // var_dump((string)$load->attributes()->hash);
-    // var_dump($hash_array[$a_]);
-    $state=0;
-    if (FORCE){
+
+// var_dump($flag);
+    if ($flag==true){
       if ($a!="stalnoy" ){
+        // echo "22222\n";
+        // var_dump($arrayxml[$a]);
         @unlink($arrayxml[$a]);
         echo "Updatind... [$a]".PHP_EOL;
         readXLS($a,$b);
@@ -66,6 +72,9 @@ foreach ($array as $a => $b) {
         $state=1;
       }
     }
+    // echo "1111\n";
+    // var_dump($hash_array[$a."_hash"]);
+    // var_dump((string)$load->attributes()->hash);
     if ($hash_array[$a."_hash"]==(string)$load->attributes()->hash ){
       echo "Actual_xml [$a]".PHP_EOL;
       if(!file_exists($arrayxml[$a."_cater"]) && $a=="stalnoy" ) {
@@ -75,6 +84,7 @@ foreach ($array as $a => $b) {
       }
     } else {
       if ($a!="stalnoy" ){
+        // echo "3333\n";
         @unlink($arrayxml[$a]);
         echo "Updatind... [$a]".PHP_EOL;
         readXLS($a,$b);
