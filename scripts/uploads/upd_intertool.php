@@ -111,8 +111,8 @@ $parseValue=substr($parseValue, 0, -1);
 }
 
 $res=$iter-$items;
-echo "Обновленно принудительно: ".$items.EOL;
-echo "Новых товаров: ".$res.EOL;
+echo "Updated items: ".$items.EOL;
+echo "New items: ".$res.EOL;
 // file_put_contents(dirname(__FILE__)."\log.txt","Обновленно принудительно: ".$items.PHP_EOL,FILE_APPEND);
 // file_put_contents(dirname(__FILE__)."\log.txt","Новых товаров: ".$iter-$items.PHP_EOL,FILE_APPEND);
 // file_put_contents(dirname(__FILE__)."\log.txt",'DONE'." Memory usage ".(memory_get_peak_usage(true) / 1024 / 1024)." MB".PHP_EOL,FILE_APPEND);

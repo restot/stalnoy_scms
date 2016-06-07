@@ -106,6 +106,13 @@ foreach ($array as $a => $b) {
 if ($state==1){
   require_once  __DIR__."/upd_last_export_yml.php";
 }
+if ($state==0){
+  $file_list=glob(dirname(__DIR__)."/output/yml/*.xml");
+  var_dump($file_list);
+  if (count($file_list)==0){
+      require_once  __DIR__."/upd_last_export_yml.php";
+  }
+}
 // $file=jsonIO::writeData($file);
 
 

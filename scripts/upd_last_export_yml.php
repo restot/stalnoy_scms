@@ -1,6 +1,6 @@
 <?php
-require_once  dirname(__DIR__).'/settings.php';
-require_once  dirname(__DIR__).'/safemysql.php';
+require_once  __DIR__.'/settings.php';
+require_once  __DIR__.'/safemysql.php';
 // require_once  dirname(__DIR__).'/fastsql.php';
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 $db = new SafeMysql(array('user' => SetUp::db_user, 'pass' => SetUp::db_pass, 'db' => SetUp::db_database, 'charset' => 'utf8'));
@@ -167,7 +167,7 @@ if($dbv['Характеристики']!='[]'){
   //
   if(!is_array($paramsarry)){
         var_dump($dbv['Характеристики']);
-        var_dump($dbv['Характеристики']);
+        // var_dump($dbv['Характеристики']);
         var_dump($paramsarry);
 
 
@@ -246,7 +246,7 @@ $i++;
 
 
 
-$xml->save(dirname(dirname(__DIR__))."/output/yml/stalnoy_yml.xml");
+$xml->save(dirname(__DIR__)."/output/yml/stalnoy_yml.xml");
 
 
 
