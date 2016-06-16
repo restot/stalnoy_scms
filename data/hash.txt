@@ -3,14 +3,12 @@
     "bp_size": 833536,
     "dia_hash": "e410e54ded41214a6bdc0ad7a9665a68",
     "dia_size": 776704,
-    "licota_hash": "9f24d137d1394dabb5eaf4890396c949",
-    "licota_size": 412786,
-    "sadko_ostatki_hash": "c2dd03a4ac81fe687a6776c4e93e6f75",
-    "sadko_ostatki_size": 117760,
-    "sadko_rrc_hash": "a29b57101d0b4569dbab561570dd2756",
-    "sadko_rrc_size": 59904,
-    "stalnoy_hash": "bd394a1005d6853f5c899e79941b3c61",
-    "stalnoy_size": 2799930,
-    "tt_hash": "83c49caaeabf0096c5e02f867d8595c6",
-    "tt_size": 956416
+    "sadko_ostatki_hash": "1a6d61a9cfff1c2ab5a7a8dab2412e00",
+    "sadko_ostatki_size": 60416,
+    "sadko_rrc_hash": "421c4c50270feb5bd315cce7188993e9",
+    "sadko_rrc_size": 60416,
+    "stalnoy_hash": "d990c56553dd63d44e684e4051cb1334",
+    "stalnoy_size": 3767272,
+    "tt_hash": "d210b36bd493d4e201cc5f0f4a2a7943",
+    "tt_size": 960512
 }

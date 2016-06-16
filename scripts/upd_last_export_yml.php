@@ -206,11 +206,11 @@ if($dbv['Характеристики']!='[]'){
       //      exit();
       if ($g2[1]="unset"){
             // var_dump($g2[0]);
-        $param = $xml->createElement("param",substr(htmlentities($g2[2]),0,180));
+        $param = $xml->createElement("param",preg_replace('//s',"",substr(htmlentities($g2[2]),0,180)));
         $param->setAttribute("name",htmlentities($g2[0]));
         $offer->appendChild($param);
       } else {
-        $param = $xml->createElement("param",substr(htmlentities($g2[2]),0,180));
+        $param = $xml->createElement("param",preg_replace('//s',"",substr(htmlentities($g2[2]),0,180)));
         $param->setAttribute("name",htmlentities($g2[0]));
         $param->setAttribute("unit",htmlentities($g2[1]));
         $offer->appendChild($param);

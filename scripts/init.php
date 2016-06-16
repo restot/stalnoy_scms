@@ -10,7 +10,13 @@ if ($argc>1){
  if ($argv[1]=="-force"){
   //  define(FORCE,true);
   $flag=true;
-} else $flag=false;
+  $type="force";
+}  elseif ($argv[1]=="-update"){
+  //  define(FORCE,true);
+  $flag=true;
+  $type="update";
+}
+ else $flag=false;
 }
 // $options = $argv;
 // var_dump($argv[1]);
@@ -57,6 +63,7 @@ foreach ($array as $a => $b) {
 
 // var_dump($flag);
     if ($flag==true){
+      if ($type=="force"){
       if ($a!="stalnoy" ){
         // echo "22222\n";
         // var_dump($arrayxml[$a]);
@@ -69,6 +76,9 @@ foreach ($array as $a => $b) {
         @unlink($arrayxml[$a."_cater"]);
         echo "Updatind... [$a]".PHP_EOL;
         readXLS($a,$b);
+        $state=1;
+      }}
+      if ($type=="update"){
         $state=1;
       }
     }
