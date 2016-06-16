@@ -206,16 +206,23 @@ if($dbv['Характеристики']!='[]'){
       //      exit();
       if ($g2[1]="unset"){
             // var_dump($g2[0]);
-        $param = $xml->createElement("param",preg_replace('//s',"",substr(htmlentities($g2[2]),0,180)));
+
+            if (strlen(htmlentities($g2[2]))>180){
+              $g2[2]=preg_replace('/(?!\s.*\s)\s.*$/s'," ",substr(htmlentities($g2[2]),0,180),1);
+            }
+        $param = $xml->createElement("param",htmlentities($g2[2]));
         $param->setAttribute("name",htmlentities($g2[0]));
         $offer->appendChild($param);
       } else {
-        $param = $xml->createElement("param",preg_replace('//s',"",substr(htmlentities($g2[2]),0,180)));
+        if (strlen(htmlentities($g2[2]))>180){
+          $g2[2]=preg_replace('/(?!\s.*\s)\s.*$/s'," ",substr(htmlentities($g2[2]),0,180),1);
+        }
+        $param = $xml->createElement("param",htmlentities($g2[2]));
         $param->setAttribute("name",htmlentities($g2[0]));
         $param->setAttribute("unit",htmlentities($g2[1]));
         $offer->appendChild($param);
       }
-
+      unset($str);
     } else {
       continue;
     }
