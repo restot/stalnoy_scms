@@ -207,19 +207,19 @@ if($dbv['Характеристики']!='[]'){
       if ($g2[1]="unset"){
             // var_dump($g2[0]);
 
-            if (strlen(htmlentities($g2[2]))>180){
-              $g2[2]=preg_replace('/(?!\s.*\s)\s.*$/s'," ",substr(htmlentities($g2[2]),0,180),1);
+            if (strlen(htmlentities($g2[2], ENT_XML1 | ENT_COMPAT))>180){
+              $g2[2]=preg_replace('/(?!\s.*\s)\s.*$/s'," ",substr(htmlentities($g2[2], ENT_XML1 | ENT_COMPAT),0,180),1);
             }
-        $param = $xml->createElement("param",htmlentities($g2[2]));
-        $param->setAttribute("name",htmlentities($g2[0]));
+        $param = $xml->createElement("param",htmlentities($g2[2], ENT_XML1 | ENT_COMPAT));
+        $param->setAttribute("name",htmlentities($g2[0], ENT_XML1 | ENT_COMPAT));
         $offer->appendChild($param);
       } else {
-        if (strlen(htmlentities($g2[2]))>180){
-          $g2[2]=preg_replace('/(?!\s.*\s)\s.*$/s'," ",substr(htmlentities($g2[2]),0,180),1);
+        if (strlen(htmlentities($g2[2], ENT_XML1 | ENT_COMPAT))>180){
+          $g2[2]=preg_replace('/(?!\s.*\s)\s.*$/s'," ",substr(htmlentities($g2[2], ENT_XML1 | ENT_COMPAT),0,180),1);
         }
-        $param = $xml->createElement("param",htmlentities($g2[2]));
-        $param->setAttribute("name",htmlentities($g2[0]));
-        $param->setAttribute("unit",htmlentities($g2[1]));
+        $param = $xml->createElement("param",htmlentities($g2[2], ENT_XML1 | ENT_COMPAT));
+        $param->setAttribute("name",htmlentities($g2[0], ENT_XML1 | ENT_COMPAT));
+        $param->setAttribute("unit",htmlentities($g2[1], ENT_XML1 | ENT_COMPAT));
         $offer->appendChild($param);
       }
       unset($str);
