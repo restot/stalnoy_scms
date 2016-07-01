@@ -1,5 +1,5 @@
 *.neon
-"settings.php"
+settings.php
 tmp
 *.xls
 *.xlsx
