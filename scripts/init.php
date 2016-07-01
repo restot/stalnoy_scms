@@ -16,6 +16,11 @@ if ($argc>1){
   $flag=true;
   $type="update";
 }
+elseif ($argv[1]=="-stalnoy"){
+  //  define(FORCE,true);
+  $flag=true;
+  $type="stalnoy";
+}
  else $flag=false;
 }
 // $options = $argv;
@@ -72,15 +77,34 @@ foreach ($array as $a => $b) {
         readXLS($a,$b);
         $state=1;
       } else {
-        @unlink($arrayxml[$a]);
-        @unlink($arrayxml[$a."_cater"]);
-        echo "Updatind... [$a]".PHP_EOL;
-        readXLS($a,$b);
+        echo "Stalnoy updated \n";
+        // @unlink($arrayxml[$a]);
+        // @unlink($arrayxml[$a."_cater"]);
+        // echo "Updatind... [$a]".PHP_EOL;
+        // readXLS($a,$b);
         $state=1;
       }}
       if ($type=="update"){
         $state=1;
       }
+      if ($type=="stalnoy"){
+        if ($a!="stalnoy" ){
+          echo "22222\n";
+          // var_dump($arrayxml[$a]);
+          // @unlink($arrayxml[$a]);
+          // echo "Updatind... [$a]".PHP_EOL;
+          // readXLS($a,$b);
+          // $state=1;
+          // continue;
+        } else {
+          // echo "Stalnoy updated \n";
+          @unlink($arrayxml[$a]);
+          @unlink($arrayxml[$a."_cater"]);
+          echo "Updatind... [$a]".PHP_EOL;
+          readXLS($a,$b);
+          $state=1;
+      }
+  }
     }
     // echo "1111\n";
     // var_dump($hash_array[$a."_hash"]);
