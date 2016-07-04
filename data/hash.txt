@@ -1,6 +1,6 @@
 {
-    "bp_hash": "7c636f7210ef21721fde8e7c174664d9",
-    "bp_size": 833536,
+    "bp_hash": "3b9d63ef0938f85190bd9c7a877d2227",
+    "bp_size": 833024,
     "dia_hash": "b006216edca8ce892e346ddc07508701",
     "dia_size": 778240,
     "sadko_ostatki_hash": "1a6d61a9cfff1c2ab5a7a8dab2412e00",

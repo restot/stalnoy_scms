@@ -173,25 +173,25 @@ if($dbv['Характеристики']!='[]'){
 
         switch (json_last_error()) {
         case JSON_ERROR_NONE:
-            echo ' - Ошибок нет';
+            echo ' - No error';
         break;
         case JSON_ERROR_DEPTH:
-            echo ' - Достигнута максимальная глубина стека';
+            echo ' - max depth of stack';
         break;
         case JSON_ERROR_STATE_MISMATCH:
-            echo ' - Некорректные разряды или не совпадение режимов';
+            echo ' - JSON_ERROR_STATE_MISMATCH';
         break;
         case JSON_ERROR_CTRL_CHAR:
-            echo ' - Некорректный управляющий символ';
+            echo ' - JSON_ERROR_CTRL_CHAR';
         break;
         case JSON_ERROR_SYNTAX:
-            echo ' - Синтаксическая ошибка, не корректный JSON';
+            echo ' - SON_ERROR_SYNTAX JSON';
         break;
         case JSON_ERROR_UTF8:
-            echo ' - Некорректные символы UTF-8, возможно неверная кодировка';
+            echo ' - JSON_ERROR_UTF8';
         break;
         default:
-            echo ' - Неизвестная ошибка';
+            echo ' - Undefined error';
         break;
     }
  exit();

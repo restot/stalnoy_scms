@@ -5,7 +5,7 @@ require_once  dirname(__DIR__).'/fastsql.php';
 $array=PathHandler::files('/input/xls/*');
 $hash_array=PathHandler::hashArray($array);
 $qarray['hash_key']=$hash_array['stalnoy_hash'];
-$start = microtime(true);
+
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 $table='last_export';
 echo "Load stalnoy to DATABASE ...".EOL;
@@ -15,7 +15,7 @@ $xmlf=dirname(dirname(__DIR__))."/output/xml/stalnoy.xml";
 $sXml=file_get_contents($xmlf);
 
 
-// $data_file=dirname(__DIR__)."/output/xml/data.txt";
+$data_file=dirname(dirname(__DIR__))."/output/xml/data.txt";
     $load = new SimpleXMLElement($sXml);
     $test =new fastsql;
     // $data='';
@@ -88,7 +88,12 @@ $str++;
     }
     $parseVal.=$db->parse("?s,", $hash);
       $parseVal=substr($parseVal, 0, -1);
-      $sql =$db->query("INSERT INTO ?n (?p) VALUES (?p)",$table,$parseCol,$parseVal);
+      // $sql =$db->query("INSERT INTO ?n (?p) VALUES (?p)",$table,$parseCol,$parseVal);
+
+      $row=$db->parse("INSERT INTO ?n (?p) VALUES (?p)",$table,$parseCol,$parseVal);
+      $sql.=$row.";";
+
+
       // var_dump($sql);
       // exit();
     // $test->addCol($hash);
@@ -99,18 +104,20 @@ $str++;
     // $data.=$string;
 
 $i++;
-
+echo $i."\n";
 }
 
+      // var_dump($sql);
 // $data=substr($data, 0, -2);
-// file_put_contents($data_file, $data);
-// echo "Load Data".EOL;
-// $qu=$db->query("LOAD DATA LOCAL INFILE ?p INTO TABLE ?n FIELDS TERMINATED BY ',,' LINES TERMINATED BY '%%' ($parseCol)", '"'.str_replace('\\', '\\\\', $data_file).'"', $table);
+file_put_contents($data_file, $sql);
+echo "Load Data".EOL;
+$start = microtime(true);
+$qu=$db->query("LOAD DATA LOCAL INFILE ?p INTO TABLE ?n ", '"'.str_replace('\\', '\\\\', $data_file).'"', $table);
 // if ($qu) {
 //     echo "Loading complite!".EOL;
 // }
 // $test->sendData($db,$table,$parseCol);
 echo 'DONE'.' Memory usage '.(memory_get_peak_usage(true) / 1024 / 1024).' MB'.EOL;
 $time = microtime(true) - $start;
-echo 'Upload time ['.round($time, 3).'] сек'.EOL;
+echo 'Upload time ['.round($time, 3).'] sec'.EOL;
 // unlink($data_file);
