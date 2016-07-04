@@ -5,7 +5,8 @@ tmp
 *.xlsx
 *.xml
 *.txt
-*.swp
+*.swp\
+new
 test*.php
 log.txt
 .bat

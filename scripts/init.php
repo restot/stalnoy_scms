@@ -76,12 +76,14 @@ foreach ($array as $a => $b) {
         echo "Updatind... [$a]".PHP_EOL;
         readXLS($a,$b);
         $state=1;
+        continue;
       } else {
         echo "Stalnoy updated \n";
         // @unlink($arrayxml[$a]);
         // @unlink($arrayxml[$a."_cater"]);
         // echo "Updatind... [$a]".PHP_EOL;
         // readXLS($a,$b);
+        continue;
         $state=1;
       }}
       if ($type=="update"){
@@ -90,6 +92,7 @@ foreach ($array as $a => $b) {
       if ($type=="stalnoy"){
         if ($a!="stalnoy" ){
           echo "22222\n";
+          continue;
           // var_dump($arrayxml[$a]);
           // @unlink($arrayxml[$a]);
           // echo "Updatind... [$a]".PHP_EOL;
@@ -102,7 +105,8 @@ foreach ($array as $a => $b) {
           @unlink($arrayxml[$a."_cater"]);
           echo "Updatind... [$a]".PHP_EOL;
           readXLS($a,$b);
-          $state=1;
+          continue;
+          // $state=1;
       }
   }
     }
@@ -111,11 +115,11 @@ foreach ($array as $a => $b) {
     // var_dump((string)$load->attributes()->hash);
     if ($hash_array[$a."_hash"]==(string)$load->attributes()->hash ){
       echo "Actual_xml [$a]".PHP_EOL;
-      if(!file_exists($arrayxml[$a."_cater"]) && $a=="stalnoy" ) {
-        echo "Updatind... [$a]".PHP_EOL;
-        readXLS($a."_cater",$b);
-          $state=1;
-      }
+      // if(!file_exists($arrayxml[$a."_cater"]) && $a=="stalnoy" ) {
+      //   echo "Updatind... [$a]".PHP_EOL;
+      //   readXLS($a."_cater",$b);
+      //     $state=1;
+      // }
     } else {
       if ($a!="stalnoy" ){
         // echo "3333\n";
@@ -124,11 +128,12 @@ foreach ($array as $a => $b) {
         readXLS($a,$b);
         $state=1;
       } else {
-        @unlink($arrayxml[$a]);
-        @unlink($arrayxml[$a."_cater"]);
-        echo "Updatind... [$a]".PHP_EOL;
-        readXLS($a,$b);
-        $state=1;
+        // @unlink($arrayxml[$a]);
+        // @unlink($arrayxml[$a."_cater"]);
+        // echo "Updatind... [$a]".PHP_EOL;
+        // readXLS($a,$b);
+        // $state=1;
+          echo "22222\n";
       }
 
     }
