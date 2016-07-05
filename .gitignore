@@ -11,4 +11,4 @@ test*.php
 log.txt
 .bat
 "hash.txt"
-*_hide_*.*
+*_hide*.*
