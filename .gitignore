@@ -10,3 +10,4 @@ new
 test*.php
 log.txt
 .bat
+"hash.txt"
