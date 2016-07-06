@@ -1,4 +1,5 @@
 <?php
+echo "VERSION 2.3.1\n\n\n\n";
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once __DIR__."/path_handler.php";
 require_once __DIR__."/read_xls.php";
