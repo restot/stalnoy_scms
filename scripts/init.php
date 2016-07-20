@@ -1,5 +1,5 @@
 <?php
-echo "VERSION 2.3.2.3\n\n\n\n";
+echo "VERSION 2.3.2.4\n\n\n\n";
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once __DIR__."/path_handler.php";
 require_once __DIR__."/read_xls.php";
@@ -109,11 +109,16 @@ foreach ($array as $a => $b) {
     if ($flag==true){
       if ($type1=="force"){
         if ($type=="stalnoy"){
-          @unlink($arrayxml[$a]);
-          @unlink($arrayxml[$a."_cater"]);
-          echo "Updatind... [$a]".PHP_EOL;
-          readXLS($a,$b);
-          // continue;
+          if ($a ="stalnoy"){
+            @unlink($arrayxml[$a]);
+            @unlink($arrayxml[$a."_cater"]);
+            echo "Updatind... [$a]".PHP_EOL;
+            readXLS($a,$b);
+          } else {
+              continue;
+          }
+
+
 
         } elseif ($type=="none") {
           if ($a!="stalnoy" ){
