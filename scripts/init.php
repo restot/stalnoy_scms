@@ -107,24 +107,42 @@ foreach ($array as $a => $b) {
 
 // var_dump($flag);
     if ($flag==true){
-      if ($type1=="force" && $type=="none"){
-      if ($a!="stalnoy" ){
-        echo  "#".__LINE__." ignored $a\n";
-        // var_dump($arrayxml[$a]);
-        @unlink($arrayxml[$a]);
-        echo "Updatind... [$a]".PHP_EOL;
-        readXLS($a,$b);
-        $state=1;
-        continue;
-      } elseif($type1=="force" && $type=="stalnoy") {
-        // echo "Stalnoy updated \n";
-        @unlink($arrayxml[$a]);
-        @unlink($arrayxml[$a."_cater"]);
-        echo "Updatind... [$a]".PHP_EOL;
-        readXLS($a,$b);
-        continue;
-        $state=1;
-      }
+      if ($type1=="force"){
+        if ($type=="stalnoy"){
+          @unlink($arrayxml[$a]);
+          @unlink($arrayxml[$a."_cater"]);
+          echo "Updatind... [$a]".PHP_EOL;
+          readXLS($a,$b);
+          // continue;
+
+        } elseif ($type=="none") {
+          if ($a!="stalnoy" ){
+            echo  "#".__LINE__." ignored $a\n";
+            // var_dump($arrayxml[$a]);
+            @unlink($arrayxml[$a]);
+            echo "Updatind... [$a]".PHP_EOL;
+            readXLS($a,$b);
+            $state=1;
+            continue;
+        }
+      // if ($a!="stalnoy" ){
+      //   echo  "#".__LINE__." ignored $a\n";
+      //   // var_dump($arrayxml[$a]);
+      //   @unlink($arrayxml[$a]);
+      //   echo "Updatind... [$a]".PHP_EOL;
+      //   readXLS($a,$b);
+      //   $state=1;
+      //   continue;
+      // } elseif($type1=="force" && $type=="stalnoy") {
+      //   // echo "Stalnoy updated \n";
+      //   @unlink($arrayxml[$a]);
+      //   @unlink($arrayxml[$a."_cater"]);
+      //   echo "Updatind... [$a]".PHP_EOL;
+      //   readXLS($a,$b);
+      //   continue;
+      //   // $state=1;
+      //   // gen_yml();
+      // }
       // else {
       //   echo "Stalnoy updated \n";
       // // @unlink($arrayxml[$a]);
@@ -134,32 +152,32 @@ foreach ($array as $a => $b) {
       // continue;
       // $state=1;
       // }
-    } elseif ($type1=="update" && $type=="none" ){
+    } elseif ($type1=="update"){
         // $state=1;
         gen_yml();
       }
-      elseif ($type1=="update" && $type=="stalnoy"){
-        exit;
-      //   // echo "update stalnoy \n";
-      //   if ($a!="stalnoy" ){
-      //     echo  "#".__LINE__." ignored $a\n";
-      //     continue;
-      //     // var_dump($arrayxml[$a]);
-      //     // @unlink($arrayxml[$a]);
-      //     // echo "Updatind... [$a]".PHP_EOL;
-      //     // readXLS($a,$b);
-      //     // $state=1;
-      //     // continue;
-      //   } else {
-      //     echo "Stalnoy updated \n";
-      //     @unlink($arrayxml[$a]);
-      //     @unlink($arrayxml[$a."_cater"]);
-      //     echo "Updatind... [$a]".PHP_EOL;
-      //     readXLS($a,$b);
-      //     continue;
-      //     // $state=1;
-      // }
-  }
+  //     elseif ($type1=="update" && $type=="stalnoy"){
+  //       exit;
+  //     //   // echo "update stalnoy \n";
+  //     //   if ($a!="stalnoy" ){
+  //     //     echo  "#".__LINE__." ignored $a\n";
+  //     //     continue;
+  //     //     // var_dump($arrayxml[$a]);
+  //     //     // @unlink($arrayxml[$a]);
+  //     //     // echo "Updatind... [$a]".PHP_EOL;
+  //     //     // readXLS($a,$b);
+  //     //     // $state=1;
+  //     //     // continue;
+  //     //   } else {
+  //     //     echo "Stalnoy updated \n";
+  //     //     @unlink($arrayxml[$a]);
+  //     //     @unlink($arrayxml[$a."_cater"]);
+  //     //     echo "Updatind... [$a]".PHP_EOL;
+  //     //     readXLS($a,$b);
+  //     //     continue;
+  //     //     // $state=1;
+  //     // }
+  // }
 }
 else{
     exit;
