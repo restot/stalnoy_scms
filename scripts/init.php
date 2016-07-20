@@ -1,5 +1,5 @@
 <?php
-echo "VERSION 2.3.2\n\n\n\n";
+echo "VERSION 2.3.2.1\n\n\n\n";
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once __DIR__."/path_handler.php";
 require_once __DIR__."/read_xls.php";
@@ -125,6 +125,7 @@ foreach ($array as $a => $b) {
         $state=1;
       }
       elseif ($type1=="update" && $type=="stalnoy"){
+        echo "update stalnoy \n";
         if ($a!="stalnoy" ){
           echo  "#".__LINE__." ignored $a\n";
           continue;
@@ -135,17 +136,18 @@ foreach ($array as $a => $b) {
           // $state=1;
           // continue;
         } else {
-          // echo "Stalnoy updated \n";
-          // @unlink($arrayxml[$a]);
-          // @unlink($arrayxml[$a."_cater"]);
-          // echo "Updatind... [$a]".PHP_EOL;
-          // readXLS($a,$b);
+          echo "Stalnoy updated \n";
+          @unlink($arrayxml[$a]);
+          @unlink($arrayxml[$a."_cater"]);
+          echo "Updatind... [$a]".PHP_EOL;
+          readXLS($a,$b);
           continue;
           // $state=1;
       }
   }
 }
 else{
+    exit;
     // echo "1111\n";
     // var_dump($hash_array[$a."_hash"]);
     // var_dump((string)$load->attributes()->hash);
