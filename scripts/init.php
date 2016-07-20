@@ -1,5 +1,5 @@
 <?php
-echo "VERSION 2.3.2.5\n\n\n\n";
+echo "VERSION 2.3.2.6\n\n\n\n";
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once __DIR__."/path_handler.php";
 require_once __DIR__."/read_xls.php";
@@ -123,7 +123,7 @@ foreach ($array as $a => $b) {
 
         } elseif ($type=="none") {
           if ($a!="stalnoy" ){
-            echo  "#".__LINE__." ignored $a\n";
+            // echo  "#".__LINE__." ignored $a\n";
             // var_dump($arrayxml[$a]);
             @unlink($arrayxml[$a]);
             echo "Updatind... [$a]".PHP_EOL;
