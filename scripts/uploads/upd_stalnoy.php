@@ -112,5 +112,5 @@ $i++;
 // $test->sendData($db,$table,$parseCol);
 echo 'DONE'.' Memory usage '.(memory_get_peak_usage(true) / 1024 / 1024).' MB'.EOL;
 $time = microtime(true) - $start;
-echo 'Upload time ['.round($time, 3).'] сек'.EOL;
+echo 'Upload time ['.round($time, 3).'] sec'.EOL;
 // unlink($data_file);
