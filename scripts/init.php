@@ -1,5 +1,5 @@
 <?php
-echo "VERSION 2.3.2.6\n\n\n\n";
+echo "VERSION 2.3.3\n\n\n\n";
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once __DIR__."/path_handler.php";
 require_once __DIR__."/read_xls.php";
@@ -51,13 +51,24 @@ if ($argc>1){
   //  define(FORCE,true);
   $flag=true;
   $type1="update";
+  $type="none";
   if ($argv[2]=="-stalnoy"){
     //  define(FORCE,true);
     $flag=true;
     $type="stalnoy";
   }
 }
-
+elseif ($argv[1]=="-normal"){
+  //  define(FORCE,true);
+  $flag=true;
+  $type1="normal";
+  $type="none";
+  if ($argv[2]=="-stalnoy"){
+    //  define(FORCE,true);
+    $flag=true;
+    $type="stalnoy";
+  }
+}
  else {
    $type="none";
    $flag=false;
@@ -137,6 +148,47 @@ foreach ($array as $a => $b) {
 
         gen_yml();
       }
+      elseif ($type1=="normal"){
+        if ($type=="stalnoy"){
+          if ($a =="stalnoy"){
+            if ($hash_array[$a."_hash"]==(string)$load->attributes()->hash ){
+              echo "Actual_xml [$a]".PHP_EOL;
+              continue;} else {
+                if ($a=="stalnoy" ){
+                  echo  "#".__LINE__." GO $a\n";
+                  @unlink($arrayxml[$a]);
+                  echo "Updatind... [$a]".PHP_EOL;
+                  readXLS($a,$b);
+                  // $state=1;
+                }
+              }
+
+        }
+
+          } else {
+              continue;
+          }
+
+
+
+        } elseif ($type=="none") {
+          if ($a!="stalnoy" ){
+
+            if ($hash_array[$a."_hash"]==(string)$load->attributes()->hash ){
+              echo "Actual_xml [$a]".PHP_EOL;
+              continue;} else {
+                if ($a!="stalnoy" ){
+                  echo  "#".__LINE__." GO $a\n";
+                  @unlink($arrayxml[$a]);
+                  echo "Updatind... [$a]".PHP_EOL;
+                  readXLS($a,$b);
+                  // $state=1;
+                }
+              }
+
+        }
+
+       }
 
 }
 else{
