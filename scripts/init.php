@@ -109,7 +109,7 @@ foreach ($array as $a => $b) {
     if ($flag==true){
       if ($type1=="force"){
         if ($type=="stalnoy"){
-          if ($a ="stalnoy"){
+          if ($a =="stalnoy"){
             @unlink($arrayxml[$a]);
             @unlink($arrayxml[$a."_cater"]);
             echo "Updatind... [$a]".PHP_EOL;
