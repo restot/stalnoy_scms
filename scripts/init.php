@@ -1,5 +1,5 @@
 <?php
-echo "VERSION 2.3.2.2\n\n\n\n";
+echo "VERSION 2.3.2.3\n\n\n\n";
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once __DIR__."/path_handler.php";
 require_once __DIR__."/read_xls.php";
@@ -125,59 +125,13 @@ foreach ($array as $a => $b) {
             $state=1;
             continue;
         }
-      // if ($a!="stalnoy" ){
-      //   echo  "#".__LINE__." ignored $a\n";
-      //   // var_dump($arrayxml[$a]);
-      //   @unlink($arrayxml[$a]);
-      //   echo "Updatind... [$a]".PHP_EOL;
-      //   readXLS($a,$b);
-      //   $state=1;
-      //   continue;
-      // } elseif($type1=="force" && $type=="stalnoy") {
-      //   // echo "Stalnoy updated \n";
-      //   @unlink($arrayxml[$a]);
-      //   @unlink($arrayxml[$a."_cater"]);
-      //   echo "Updatind... [$a]".PHP_EOL;
-      //   readXLS($a,$b);
-      //   continue;
-      //   // $state=1;
-      //   // gen_yml();
-      // }
-      // else {
-      //   echo "Stalnoy updated \n";
-      // // @unlink($arrayxml[$a]);
-      // // @unlink($arrayxml[$a."_cater"]);
-      // // echo "Updatind... [$a]".PHP_EOL;
-      // // readXLS($a,$b);
-      // continue;
-      // $state=1;
-      // }
-    } elseif ($type1=="update"){
-        // $state=1;
+      }
+    }
+     elseif ($type1=="update"){
+
         gen_yml();
       }
-  //     elseif ($type1=="update" && $type=="stalnoy"){
-  //       exit;
-  //     //   // echo "update stalnoy \n";
-  //     //   if ($a!="stalnoy" ){
-  //     //     echo  "#".__LINE__." ignored $a\n";
-  //     //     continue;
-  //     //     // var_dump($arrayxml[$a]);
-  //     //     // @unlink($arrayxml[$a]);
-  //     //     // echo "Updatind... [$a]".PHP_EOL;
-  //     //     // readXLS($a,$b);
-  //     //     // $state=1;
-  //     //     // continue;
-  //     //   } else {
-  //     //     echo "Stalnoy updated \n";
-  //     //     @unlink($arrayxml[$a]);
-  //     //     @unlink($arrayxml[$a."_cater"]);
-  //     //     echo "Updatind... [$a]".PHP_EOL;
-  //     //     readXLS($a,$b);
-  //     //     continue;
-  //     //     // $state=1;
-  //     // }
-  // }
+
 }
 else{
     exit;
@@ -200,11 +154,7 @@ else{
         readXLS($a,$b);
         $state=1;
       } else {
-        // @unlink($arrayxml[$a]);
-        // @unlink($arrayxml[$a."_cater"]);
-        // echo "Updatind... [$a]".PHP_EOL;
-        // readXLS($a,$b);
-        // $state=1;
+
           echo "22222\n";
       }
 
@@ -219,7 +169,7 @@ else{
 }
 
 
-// $file=jsonIO::writeData($file);
+
 
 
  ?>
