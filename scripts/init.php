@@ -1,11 +1,24 @@
 <?php
-echo "VERSION 2.3.2.1\n\n\n\n";
+echo "VERSION 2.3.2.2\n\n\n\n";
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once __DIR__."/path_handler.php";
 require_once __DIR__."/read_xls.php";
 
 if (PHP_SAPI != "cli") {
     exit;
+}
+function gen_yml(){
+  // global $state;
+  // if ($state==1){
+    require_once  __DIR__."/upd_last_export_yml.php";
+  // }
+  // if ($state==0){
+  //   $file_list=glob(dirname(__DIR__)."/output/yml/*.xml");
+  //   // var_dump($file_list);
+  //   if (count($file_list)==0){
+  //       require_once  __DIR__."/upd_last_export_yml.php";
+  //   }
+  // }
 }
 if ($argc>1){
   if ($argv[1]=="-nil"){
@@ -103,7 +116,7 @@ foreach ($array as $a => $b) {
         readXLS($a,$b);
         $state=1;
         continue;
-      } elseif($type1=="force" && $type=="none") {
+      } elseif($type1=="force" && $type=="stalnoy") {
         // echo "Stalnoy updated \n";
         @unlink($arrayxml[$a]);
         @unlink($arrayxml[$a."_cater"]);
@@ -122,28 +135,30 @@ foreach ($array as $a => $b) {
       // $state=1;
       // }
     } elseif ($type1=="update" && $type=="none" ){
-        $state=1;
+        // $state=1;
+        gen_yml();
       }
       elseif ($type1=="update" && $type=="stalnoy"){
-        echo "update stalnoy \n";
-        if ($a!="stalnoy" ){
-          echo  "#".__LINE__." ignored $a\n";
-          continue;
-          // var_dump($arrayxml[$a]);
-          // @unlink($arrayxml[$a]);
-          // echo "Updatind... [$a]".PHP_EOL;
-          // readXLS($a,$b);
-          // $state=1;
-          // continue;
-        } else {
-          echo "Stalnoy updated \n";
-          @unlink($arrayxml[$a]);
-          @unlink($arrayxml[$a."_cater"]);
-          echo "Updatind... [$a]".PHP_EOL;
-          readXLS($a,$b);
-          continue;
-          // $state=1;
-      }
+        exit;
+      //   // echo "update stalnoy \n";
+      //   if ($a!="stalnoy" ){
+      //     echo  "#".__LINE__." ignored $a\n";
+      //     continue;
+      //     // var_dump($arrayxml[$a]);
+      //     // @unlink($arrayxml[$a]);
+      //     // echo "Updatind... [$a]".PHP_EOL;
+      //     // readXLS($a,$b);
+      //     // $state=1;
+      //     // continue;
+      //   } else {
+      //     echo "Stalnoy updated \n";
+      //     @unlink($arrayxml[$a]);
+      //     @unlink($arrayxml[$a."_cater"]);
+      //     echo "Updatind... [$a]".PHP_EOL;
+      //     readXLS($a,$b);
+      //     continue;
+      //     // $state=1;
+      // }
   }
 }
 else{
@@ -184,16 +199,8 @@ else{
     $state=1;
   }
 }
-if ($state==1){
-  require_once  __DIR__."/upd_last_export_yml.php";
-}
-if ($state==0){
-  $file_list=glob(dirname(__DIR__)."/output/yml/*.xml");
-  // var_dump($file_list);
-  if (count($file_list)==0){
-      require_once  __DIR__."/upd_last_export_yml.php";
-  }
-}
+
+
 // $file=jsonIO::writeData($file);
 
 
