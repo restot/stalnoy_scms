@@ -1,5 +1,5 @@
 <?php
-echo "VERSION 2.3.2.4\n\n\n\n";
+echo "VERSION 2.3.2.5\n\n\n\n";
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once __DIR__."/path_handler.php";
 require_once __DIR__."/read_xls.php";
@@ -41,6 +41,7 @@ if ($argc>1){
   //  define(FORCE,true);
   $flag=true;
   $type1="force";
+  $type="none";
   if ($argv[2]=="-stalnoy"){
     //  define(FORCE,true);
     $flag=true;
