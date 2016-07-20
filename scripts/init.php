@@ -192,6 +192,7 @@ foreach ($array as $a => $b) {
 
 }
 else{
+    ECHO "no params \nexit...";
     exit;
     // echo "1111\n";
     // var_dump($hash_array[$a."_hash"]);
