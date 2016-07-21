@@ -1,5 +1,5 @@
 <?php
-echo "VERSION 2.3.3.3\n";
+echo "#".__LINE__." VERSION 2.3.3.3\n";
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once __DIR__."/path_handler.php";
 require_once __DIR__."/read_xls.php";
@@ -22,13 +22,13 @@ function gen_yml(){
 }
 if ($argc>1){
   if ($argv[1]=="-nil"){
-    echo "Cleaning ...\n";
+    echo "#".__LINE__." Cleaning ...\n";
     @unlink(dirname(__DIR__)."/data/hash.txt");
     @unlink(dirname(__DIR__)."/data/log.txt");
     $file_list=glob(dirname(__DIR__).'/output/xml/*.xml');
     foreach ($file_list as $a => $b) {
       // var_dump($b);
-      echo "Remove $b\n";
+      echo "#".__LINE__." Remove $b\n";
       unlink($b);
 
     }
@@ -124,7 +124,7 @@ foreach ($array as $a => $b) {
           if ($a =="stalnoy"){
             @unlink($arrayxml[$a]);
             @unlink($arrayxml[$a."_cater"]);
-            echo "Updatind... [$a]".PHP_EOL;
+            echo "#".__LINE__." Updatind... [$a]".PHP_EOL;
             readXLS($a,$b);
           } else {
               continue;
@@ -137,7 +137,7 @@ foreach ($array as $a => $b) {
             // echo  "#".__LINE__." ignored $a\n";
             // var_dump($arrayxml[$a]);
             @unlink($arrayxml[$a]);
-            echo "Updatind... [$a]".PHP_EOL;
+            echo "#".__LINE__." Updatind... [$a]".PHP_EOL;
             readXLS($a,$b);
             $state=1;
             continue;
@@ -153,12 +153,12 @@ foreach ($array as $a => $b) {
 
           if ($a =="stalnoy"){
             if ($hash_array[$a."_hash"]==(string)$load->attributes()->hash ){
-              echo "Actual_xml [$a]".PHP_EOL;
+              echo "#".__LINE__." Actual_xml [$a]".PHP_EOL;
               continue;} else {
                 if ($a=="stalnoy" ){
                   echo  "#".__LINE__." GO $a\n";
                   @unlink($arrayxml[$a]);
-                  echo "Updatind... [$a]".PHP_EOL;
+                  echo "#".__LINE__. " Updatind... [$a]".PHP_EOL;
                   readXLS($a,$b);
                   // $state=1;
                 }
@@ -177,12 +177,12 @@ foreach ($array as $a => $b) {
           if ($a!="stalnoy" ){
 
             if ($hash_array[$a."_hash"]==(string)$load->attributes()->hash ){
-              echo "Actual_xml [$a]".PHP_EOL;
+              echo "#".__LINE__." Actual_xml [$a]".PHP_EOL;
               continue;} else {
                 if ($a!="stalnoy" ){
                   echo  "#".__LINE__." GO $a\n";
                   @unlink($arrayxml[$a]);
-                  echo "Updatind... [$a]".PHP_EOL;
+                  echo "#".__LINE__." Updatind... [$a]".PHP_EOL;
                   readXLS($a,$b);
                   // $state=1;
                 }
@@ -194,13 +194,13 @@ foreach ($array as $a => $b) {
 
 }
 else{
-    ECHO "no params \nexit...";
+    ECHO "#".__LINE__. "no params \nexit...";
     exit;
     // echo "1111\n";
     // var_dump($hash_array[$a."_hash"]);
     // var_dump((string)$load->attributes()->hash);
     if ($hash_array[$a."_hash"]==(string)$load->attributes()->hash ){
-      echo "Actual_xml [$a]".PHP_EOL;
+      echo "#".__LINE__." Actual_xml [$a]".PHP_EOL;
       continue;
       // if(!file_exists($arrayxml[$a."_cater"]) && $a=="stalnoy" ) {
       //   echo "Updatind... [$a]".PHP_EOL;
@@ -212,15 +212,16 @@ else{
         // echo "3333\n";
         echo  "#".__LINE__." GO $a\n";
         @unlink($arrayxml[$a]);
-        echo "Updatind... [$a]".PHP_EOL;
+        echo "#".__LINE__." Updatind... [$a]".PHP_EOL;
         readXLS($a,$b);
         $state=1;
       } else {
 
-          echo "22222\n";
+          echo "#".__LINE__." i'm not shure...wtf\n";
       }
 
     }
+
 
   }
 }
