@@ -1,5 +1,6 @@
 *.neon
-"scripts/settings.php"
+$GIT_DIR/scripts/settings.php
+scripts/settings.php
 tmp
 *.xls
 *.xlsx

@@ -2,8 +2,9 @@
 ini_set('memory_limit', '-1');
 global $i;
 
-function readXLS($name,$path)
+function readXLS($name,$path,$bool=FALSE,$flag=TRUE)
 {
+  if ($flag){
 echo "Read $name .xlsx to .xml ...".EOL;
 require_once dirname(__FILE__) . '\Classes\PHPExcel.php';
 
@@ -65,15 +66,34 @@ foreach($aSheet->getRowIterator() as $row){
 $xml->save(dirname(__DIR__) . "/output/xml/".$name.".xml");
 
 echo 'DONE'." Memory usage ".(memory_get_peak_usage(true) / 1024 / 1024)." MB".EOL;
-echo "UPD DATABASE $name\n";
-require_once dirname(__DIR__)."/scripts/uploads/upd_".$name.".php";
+
+if ($i!=1){
+  if ($bool){
+    echo "UPD DATABASE $name\n";
+    require_once dirname(__DIR__)."/scripts/uploads/upd_".$name.".php";
+  }
+} else {
+  if ($bool){
+      echo "UPD DATABASE $name\n";
+    require_once dirname(__DIR__)."/scripts/uploads/upd_".$name.".php";
+  }
+
+}
+
+
 // sleep(1);
 if($i==1){
   echo "Updatind... [stalnoy_cater]".PHP_EOL;
   readXLS("stalnoy_cater",$path);
-  echo "UPD DATABASE stalnoy_cater";
-  require_once dirname(__DIR__)."/scripts/uploads/upd_stalnoy_cater.php";
+  if ($bool){
+    echo "UPD DATABASE stalnoy_cater";
+    require_once dirname(__DIR__)."/scripts/uploads/upd_stalnoy_cater.php";
+  }
+
   $i=0;
+}
+} else {
+    require_once dirname(__DIR__)."/scripts/uploads/upd_".$name.".php";
 }
 }
 
