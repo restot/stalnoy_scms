@@ -1,5 +1,5 @@
 <?php
-echo "VERSION 2.3.3.2\n\n\n\n";
+echo "VERSION 2.3.3.3\n";
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once __DIR__."/path_handler.php";
 require_once __DIR__."/read_xls.php";
@@ -148,7 +148,7 @@ foreach ($array as $a => $b) {
 
         gen_yml();
       }
-      elseif ($type1=="normal"){
+      elseif ($type1=="normal" && $type=="stalnoy"){
         echo  "#".__LINE__." GO $a\n";
 
           if ($a =="stalnoy"){
@@ -172,7 +172,7 @@ foreach ($array as $a => $b) {
 
 
 
-        } elseif ($type=="none") {
+      } elseif ($type1=="normal" && $type=="none") {
           echo  "#".__LINE__." GO $a\n";
           if ($a!="stalnoy" ){
 
