@@ -149,7 +149,7 @@ foreach ($array as $a => $b) {
         gen_yml();
       }
       elseif ($type1=="normal" && $type=="stalnoy"){
-        echo  "#".__LINE__." GO $a\n";
+      //  echo  "#".__LINE__." GO $a\n";
 
           if ($a =="stalnoy"){
             if ($hash_array[$a."_hash"]==(string)$load->attributes()->hash ){
@@ -173,7 +173,7 @@ foreach ($array as $a => $b) {
 
 
       } elseif ($type1=="normal" && $type=="none") {
-          echo  "#".__LINE__." GO $a\n";
+        //  echo  "#".__LINE__." GO $a\n";
           if ($a!="stalnoy" ){
 
             if ($hash_array[$a."_hash"]==(string)$load->attributes()->hash ){
@@ -209,7 +209,8 @@ else{
       // }
     } else {
       if ($a!="stalnoy" ){
-        echo "3333\n";
+        // echo "3333\n";
+        echo  "#".__LINE__." GO $a\n";
         @unlink($arrayxml[$a]);
         echo "Updatind... [$a]".PHP_EOL;
         readXLS($a,$b);
