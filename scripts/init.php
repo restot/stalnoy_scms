@@ -194,7 +194,7 @@ foreach ($array as $a => $b) {
 
 }
 else{
-    ECHO "#".__LINE__. "no params \nexit...";
+    ECHO "#".__LINE__. "no params exit...";
     exit;
     // echo "1111\n";
     // var_dump($hash_array[$a."_hash"]);
