@@ -1,5 +1,5 @@
 <?php
-echo "#".__LINE__." VERSION 2.4.0\n";
+echo "#".__LINE__." VERSION 2.4.1\n";
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once __DIR__."/path_handler.php";
 require_once __DIR__."/read_xls.php";

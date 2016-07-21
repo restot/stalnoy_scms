@@ -3,6 +3,7 @@
 // define('stalnoy',true);
 echo "Please enter KURS BP...\n";
 define('KURS',trim(fgets(STDIN)));
+// exec("color e");
 require_once  dirname(__DIR__)."/path_handler.php";
 $array=PathHandler::files('/input/xls/*');
 $hash_array=PathHandler::hashArray($array);
@@ -39,6 +40,7 @@ $iter=1;
 foreach ($load as $row => $tag) {
   if (
        (string)$tag->col_0=='unset' ||
+       (string)$tag->col_0=='Код' ||
        (string)$tag->col_6=='unset' ||
        (string)$tag->col_3=='unset'
        ){
