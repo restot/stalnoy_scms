@@ -253,7 +253,7 @@ foreach ($array as $a => $b) {
                  continue;
               }
 
-              } else {
+               else {
                 if ($a!="stalnoy" ){
                   echo  "#".__LINE__." GO $a\n";
                   @unlink($arrayxml[$a]);
@@ -262,7 +262,7 @@ foreach ($array as $a => $b) {
                   // $state=1;
                 }
               }
-
+            }
         }
 
        }
