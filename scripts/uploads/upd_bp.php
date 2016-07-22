@@ -48,7 +48,7 @@ foreach ($load as $row => $tag) {
   }
   // print_r($load);
   // $pos=strpos((string)$tag->c(string)$tag->col_6ol_6,);
-  if ((int)$tag->col_7 != 0) {
+  if ((int)$tag->col_8 != 0) {
     $itemcount='+';
   } else{
     $itemcount='-';
