@@ -247,7 +247,7 @@ foreach ($array as $a => $b) {
          echo  "#".__LINE__." GO $a\n";
           if ($a!="stalnoy" ){
             echo  "#".__LINE__." GO $a\n";
-            if ($load!=NULL ){
+            // if ($load!=NULL ){
               echo  "#".__LINE__." GO $a\n";
               if (array_key_exists($a,$arrayxml)){
               if ( $hash_array[$a."_hash"]==(string)$load->attributes()->hash){
@@ -276,7 +276,7 @@ foreach ($array as $a => $b) {
                readXLS($a,$b);
             }
         }
-       }
+      //  }
      }
       }
      }
