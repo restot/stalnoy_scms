@@ -1,5 +1,5 @@
 <?php
-echo "#".__LINE__." VERSION 2.4.3\n";
+echo "#".__LINE__." VERSION 2.4.2\n";
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once __DIR__."/path_handler.php";
 require_once __DIR__."/read_xls.php";
@@ -266,9 +266,7 @@ foreach ($array as $a => $b) {
                   // $state=1;
                 }
               }
-            }
-
-          else {
+            } else {
               echo  "#".__LINE__." GO $a\n";
              if ($a!="stalnoy" ){
                echo  "#".__LINE__." GO $a\n";
@@ -278,11 +276,11 @@ foreach ($array as $a => $b) {
                readXLS($a,$b);
             }
         }
-
        }
+     }
+      }
+     }
 
-}
-}
 else{
     ECHO "#".__LINE__. "no params exit...";
     exit;
