@@ -266,7 +266,9 @@ foreach ($array as $a => $b) {
                   // $state=1;
                 }
               }
-            } else {
+            }
+
+          else {
               echo  "#".__LINE__." GO $a\n";
              if ($a!="stalnoy" ){
                echo  "#".__LINE__." GO $a\n";
@@ -279,6 +281,7 @@ foreach ($array as $a => $b) {
 
        }
 
+}
 }
 else{
     ECHO "#".__LINE__. "no params exit...";
