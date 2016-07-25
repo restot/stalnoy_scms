@@ -247,8 +247,8 @@ foreach ($array as $a => $b) {
          echo  "#".__LINE__." GO $a\n";
           if ($a!="stalnoy" ){
             echo  "#".__LINE__." GO $a\n";
-            // if ($load!=NULL ){
-              // echo  "#".__LINE__." GO $a\n";
+            if ($load!=NULL ){
+              echo  "#".__LINE__." GO $a\n";
               if ( $hash_array[$a."_hash"]==(string)$load->attributes()->hash){
                  echo "#".__LINE__." Actual_xml [$a]".PHP_EOL;
                  continue;
@@ -265,7 +265,7 @@ foreach ($array as $a => $b) {
                   // $state=1;
                 }
               }
-            // }
+            }
         }
 
        }
