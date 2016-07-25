@@ -1,5 +1,5 @@
 <?php
-echo "#".__LINE__." VERSION 2.4.1\n";
+echo "#".__LINE__." VERSION 2.4.2\n";
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once __DIR__."/path_handler.php";
 require_once __DIR__."/read_xls.php";
@@ -246,15 +246,18 @@ foreach ($array as $a => $b) {
       } elseif ($type1=="normal" && $type=="none") {
          echo  "#".__LINE__." GO $a\n";
           if ($a!="stalnoy" ){
-
+            echo  "#".__LINE__." GO $a\n";
             if ($load!=NULL ){
+              echo  "#".__LINE__." GO $a\n";
               if ( $hash_array[$a."_hash"]==(string)$load->attributes()->hash){
                  echo "#".__LINE__." Actual_xml [$a]".PHP_EOL;
                  continue;
               }
 
                else {
+                 echo  "#".__LINE__." GO $a\n";
                 if ($a!="stalnoy" ){
+                  echo  "#".__LINE__." GO $a\n";
                   echo  "#".__LINE__." GO $a\n";
                   @unlink($arrayxml[$a]);
                   echo "#".__LINE__." Updatind... [$a]".PHP_EOL;
