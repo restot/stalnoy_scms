@@ -16,7 +16,7 @@ $inputFileName = $path;
     $objReader = PHPExcel_IOFactory::createReader($inputFileType);
     $objReader->setReadDataOnly(true);
     $objPHPExcel = $objReader->load($inputFileName);
-    if ($i==0 && $name=='stalnoy'){
+    if ($name=='stalnoy'){
 
       $i=1;
 
