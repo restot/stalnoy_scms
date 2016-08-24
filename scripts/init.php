@@ -181,6 +181,8 @@ foreach ($array as $a => $b) {
             // @unlink($arrayxml[$a."_cater"]);
             echo "#".__LINE__." Updatind... [$a]".PHP_EOL;
             readXLS($a,$b,true,false);
+			echo "#".__LINE__." Updatind... [stalnoy_cater]".PHP_EOL;
+            readXLS("stalnoy_cater",$b,true,false);
           } else {
               continue;
           }
