@@ -50,7 +50,7 @@ foreach ($load as $row => $tag) {
   } else{
     $itemcount='+';
   }
-// $qarray['Идентификатор_товара']=(string)$tag->col_1;
+// $qarray['Код_товара']=(string)$tag->col_1;
 $uuid=(string)$tag->col_2;
 $qarray['Цена']=round((float)$tag->col_4,6);
 $qarray['Наличие']=$itemcount;
@@ -75,10 +75,10 @@ $qarray['Наличие']=$itemcount;
 // $parseValue=substr($parseValue, 0, -1);
 
 // print_r($qarray);
-  $check=$db->getOne("SELECT ?n FROM ?n WHERE ?n=?s","Идентификатор_товара",$table,"Идентификатор_товара",$uuid);
+  $check=$db->getOne("SELECT ?n FROM ?n WHERE ?n=?s","Код_товара",$table,"Код_товара",$uuid);
   // var_dump($check);
   if ($check==$uuid){
-    $sql = $db->query("UPDATE ?n SET ?u WHERE ?n=?s",$table,$qarray,"Идентификатор_товара",$uuid);
+    $sql = $db->query("UPDATE ?n SET ?u WHERE ?n=?s",$table,$qarray,"Код_товара",$uuid);
 
     $items++;
     echo "LOAD_LICOTA+#".$iter." Load [".$uuid."]"." price=[".$qarray['Цена']."]"." available=[".$qarray['Наличие']."]".EOL;

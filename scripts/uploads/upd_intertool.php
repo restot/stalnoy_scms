@@ -77,7 +77,7 @@ foreach ($load->shop->offers->offer as $row => $tag) {
 // }
 // $qarray['date']=date("Y-n-d H:i:s");
 $qarray['Цена']=round($item['price'],6);
-$qarray['Идентификатор_товара']=$item['id'];
+$qarray['Код_товара']=$item['id'];
 $qarray['Наличие']=($item['available']!='true')?'0':'+';
   // $qarray['name']=iconv('uft8','cp1251',$qarray['name']);
   // $item['description']=$mysqli->real_escape_string($item['description']);
@@ -91,18 +91,18 @@ $qarray['Наличие']=($item['available']!='true')?'0':'+';
 $parseValue=substr($parseValue, 0, -1);
 
 // var_dump($qarray);
-  $check=$db->getOne("SELECT ?n FROM ?n WHERE ?n=?s","Идентификатор_товара",$table,"Идентификатор_товара",$qarray['Идентификатор_товара']);
+  $check=$db->getOne("SELECT ?n FROM ?n WHERE ?n=?s","Код_товара",$table,"Код_товара",$qarray['Код_товара']);
   // var_dump($check);
   // exit();
-  if ($check==$qarray['Идентификатор_товара']){
-        $sql = $db->query("UPDATE ?n SET ?u WHERE ?n=?s",$table,$qarray,"Идентификатор_товара",$qarray['Идентификатор_товара']);
+  if ($check==$qarray['Код_товара']){
+        $sql = $db->query("UPDATE ?n SET ?u WHERE ?n=?s",$table,$qarray,"Код_товара",$qarray['Код_товара']);
         $stat=($sql===true)?'UPD':'ERR_UPD';
         $items++;
-        echo "LOAD_INTER#".$iter." Load [".$qarray['Идентификатор_товара']."]"." Status=[".$qarray['Наличие']."]".EOL;
-        // file_put_contents(dirname(__FILE__)."\log.txt","#".$iter." Load [".$qarray['Идентификатор_товара']."]"." Status=[".$qarray['Наличие']."]".PHP_EOL,FILE_APPEND);
+        echo "LOAD_INTER#".$iter." Load [".$qarray['Код_товара']."]"." Status=[".$qarray['Наличие']."]".EOL;
+        // file_put_contents(dirname(__FILE__)."\log.txt","#".$iter." Load [".$qarray['Код_товара']."]"." Status=[".$qarray['Наличие']."]".PHP_EOL,FILE_APPEND);
   } else {
-        echo "LOAD_INTER#".$iter." Check [".$qarray['Идентификатор_товара']."]".EOL;
-        // file_put_contents(dirname(__FILE__)."\log.txt","#".$iter." Check [".$qarray['Идентификатор_товара']."]".PHP_EOL,FILE_APPEND);
+        echo "LOAD_INTER#".$iter." Check [".$qarray['Код_товара']."]".EOL;
+        // file_put_contents(dirname(__FILE__)."\log.txt","#".$iter." Check [".$qarray['Код_товара']."]".PHP_EOL,FILE_APPEND);
   }
   // usleep(300000);
   unset($item);

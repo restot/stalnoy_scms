@@ -71,10 +71,10 @@ $qarray['Цена']=round((float)$tag->col_4,6);
 // $parseValue=substr($parseValue, 0, -1);
 
 // print_r($qarray);
-  $check=$db->getOne("SELECT ?n FROM ?n WHERE ?n=?s","Идентификатор_товара",$table,"Идентификатор_товара",$uuid);
+  $check=$db->getOne("SELECT ?n FROM ?n WHERE ?n=?s","Код_товара",$table,"Код_товара",$uuid);
   // var_dump($check);
   if ($check==$uuid){
-    $sql = $db->query("UPDATE ?n SET ?u WHERE ?n=?s",$table,$qarray,"Идентификатор_товара",$uuid);
+    $sql = $db->query("UPDATE ?n SET ?u WHERE ?n=?s",$table,$qarray,"Код_товара",$uuid);
 
     $items++;
     echo "LOAD_SADKO_RRC#".$iter." Load [".$uuid."]"." price=[".$qarray['Цена']."]".EOL;
