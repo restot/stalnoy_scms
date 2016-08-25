@@ -49,20 +49,18 @@ foreach ($load as $key => $catarray) {
     }
     // $string='';
     $parseVal = '';
-    $str=1;
+    $str=0;
     $itr=1;
     $temparr=array();
     $strarray=array();
     foreach ($catarray as $v1 => $v2) {
-		if ( $str==14 ){
-                    $str++;
+		
+		if ( $str==13 || $str==26 || $str==27 ){
+                   $str++;
                    continue;
              }
-        if ($str >= 26) {
-             if ( $str==27 || $str==28){
-                    $str++;
-                   continue;
-             }
+        if ($str >= 28) {
+           
              //NOTE: Блок считывания характеристик
              if ($itr <= 2) {
                    $itr++;
@@ -81,17 +79,19 @@ foreach ($load as $key => $catarray) {
         // $test->addCol($v2);
         $parseVal.=$db->parse("?s,", $v2);
 }
-      if(count($catarray) == $str){
+      if($str == 84){
             $strarray=json_encode($strarray, JSON_HEX_AMP | JSON_HEX_APOS | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_QUOT);
             // $string.=$strarray.',,';
               // $test->addCol($strarray);
               $parseVal.=$db->parse("?s,", $strarray);
       }
-
+//echo "$str\n"; 
 $str++;
+
     }
     $parseVal.=$db->parse("?s,", $hash);
       $parseVal=substr($parseVal, 0, -1);
+	  echo $db->parse("INSERT INTO ?n (?p) VALUES (?p)",$table,$parseCol,$parseVal);
       $sql =$db->query("INSERT INTO ?n (?p) VALUES (?p)",$table,$parseCol,$parseVal);
       // var_dump($sql);
       // exit();
