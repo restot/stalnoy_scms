@@ -91,7 +91,7 @@ $str++;
     }
     $parseVal.=$db->parse("?s,", $hash);
       $parseVal=substr($parseVal, 0, -1);
-	  echo $db->parse("INSERT INTO ?n (?p) VALUES (?p)",$table,$parseCol,$parseVal);
+	  //echo $db->parse("INSERT INTO ?n (?p) VALUES (?p)",$table,$parseCol,$parseVal);
       $sql =$db->query("INSERT INTO ?n (?p) VALUES (?p)",$table,$parseCol,$parseVal);
       // var_dump($sql);
       // exit();
