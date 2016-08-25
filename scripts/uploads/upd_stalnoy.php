@@ -54,8 +54,12 @@ foreach ($load as $key => $catarray) {
     $temparr=array();
     $strarray=array();
     foreach ($catarray as $v1 => $v2) {
+		if ( $str==14 ){
+                    $str++;
+                   continue;
+             }
         if ($str >= 26) {
-             if ( $str==13 ||$str==26 || $str==27){
+             if ( $str==27 || $str==28){
                     $str++;
                    continue;
              }
