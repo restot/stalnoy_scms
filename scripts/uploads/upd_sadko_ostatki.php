@@ -43,8 +43,8 @@ foreach ($load as $row => $tag) {
     continue;
   }
   // print_r($load);
-  $pos=strpos((string)$tag->col_7,'+');
-  $pos1=is_numeric((string)$tag->col_7);
+  $pos=strpos((string)$tag->col_9,'+');
+  $pos1=is_numeric((string)$tag->col_9);
   // var_dump($pos1);
   if ($pos === false && $pos1 === false) {
     $itemcount='0';
