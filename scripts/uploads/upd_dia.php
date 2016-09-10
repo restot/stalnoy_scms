@@ -47,7 +47,7 @@ foreach ($load as $row => $tag) {
   $pos1=is_numeric((string)$tag->col_7);
   // var_dump($pos1);
   if ($pos === false && $pos1 === false) {
-    $itemcount='0';
+    $itemcount='-';
   } else{
     $itemcount='+';
   }

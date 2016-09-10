@@ -43,7 +43,7 @@ foreach ($load as $row => $tag) {
   // print_r($load);
   $pos=strpos((string)$tag->col_6,'*');
   if ($pos === false) {
-    $itemcount='0';
+    $itemcount='-';
   } else{
     $itemcount='+';
   }
